@@ -233,7 +233,7 @@ class EasyImport:
         for file in shapefiles:
             # Populate the shape dictionnary
             self.shapeFiles[file.split('.',1)[0]] = file
-            print self.shapeFiles.keys()
+            # print self.shapeFiles.keys()
             
     def removeShapeFiles(self, shapeFiles):
         """Removes generated shapefiles"""
@@ -241,7 +241,7 @@ class EasyImport:
         for code in shapeFiles.keys():
             paths = str(self.shapeDirectory.absolutePath() + '/' + code + '.*')
             files = glob(paths)
-            print paths
+            # print paths
             for file in files:
                 os.remove(file)
             
@@ -302,14 +302,14 @@ class EasyImport:
             
             if not os.path.exists(ofilepath):
                 dataSource = driver.CreateDataSource(ofilepath)
-                olayer = dataSource.CreateLayer("points", srs, geom_type=ogr.wkbPoint)
+                olayer = dataSource.CreateLayer("points", srs, geom_type=ogr.wkbPoint25D)
                 olayer.CreateField(ogr.FieldDefn("Point_ID", ogr.OFTString))
                 olayer.CreateField(ogr.FieldDefn("Ortho_Heig", ogr.OFTReal))
             else:
                 dataSource = driver.Open(ofilepath,1)
                 olayer = dataSource.GetLayer()
             
-            print ofilepath
+            # print ofilepath
             
             # Set feature fields            
             feature = ogr.Feature(olayer.GetLayerDefn())
@@ -403,7 +403,7 @@ class EasyImport:
             # Increment progress bar
             self.dlg.pgbImport.setValue(self.dlg.pgbImport.value() + 1)
             
-        self.removeShapeFiles(self.shapeFiles)
+#        self.removeShapeFiles(self.shapeFiles)
     
     def importData(self, filename, code):
         """Import data from shapefile to an specified layer in project.
@@ -474,20 +474,20 @@ class EasyImport:
             #Create new feature in destination layer and get geometry from shapefile
             newFeature = QgsFeature(fields)
             newFeature.setGeometry(QgsGeometry.fromWkt(str(feature.GetGeometryRef())))
-            
+                        
             # For each column mapping
             for k in colunmMappingDict.keys():
-                print "source %s -> destination %s" % (k,colunmMappingDict[k])
+                # print "source %s -> destination %s" % (k,colunmMappingDict[k])
                 
                 # With regex
                 if regexMappingDict[k]:
                     regexp = re.compile(regexMappingDict[k])
-                    print str(k)
-                    print feature.GetField(str(k))
+                    # print str(k)
+                    # print feature.GetField(str(k))
                     
                     m = regexp.match(feature.GetField(str(k)))
                     if not (m is None):
-                        print 'Regex : %s   --> Value : %s' % (regexMappingDict[k], m.group('group'))
+                        # print 'Regex : %s   --> Value : %s' % (regexMappingDict[k], m.group('group'))
                         newFeature.setAttribute(fields.fieldNameIndex(colunmMappingDict[k]), m.group('group'))
                 
                 # Without regex
@@ -499,7 +499,7 @@ class EasyImport:
                 #print "destination %s -> value %s" % (k,staticMappingDict[k])
                 newFeature.setAttribute(fields.fieldNameIndex(k), staticMappingDict[k])
             
-            # Add new featrue in destination layer
+            # Add new feature in destination layer
             destinationlayer.addFeature(newFeature, True)
             
         self.dlg.txtOut.appendPlainText('Shape %s : %s features imported \n' % (code, featureCount))
