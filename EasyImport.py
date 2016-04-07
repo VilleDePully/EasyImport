@@ -409,7 +409,7 @@ class EasyImport:
             # Increment progress bar
             self.dlg.pgbImport.setValue(self.dlg.pgbImport.value() + 1)
             
-#        self.removeShapeFiles(self.shapeFiles)
+        self.removeShapeFiles(self.shapeFiles)
     
     def importData(self, filename, code):
         """Import data from shapefile to an specified layer in project.
