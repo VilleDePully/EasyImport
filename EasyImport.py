@@ -279,60 +279,66 @@ class EasyImport:
             # split fields values
             line_fields = removedTabs.split(' ')
             
-            # Create the dictionnary
-            featureDict = ['GPSID','TYPE', 'CODE', 'Y', 'X', 'Z', 'DELTA', 'COMMENT']
-            
-            # Extract the information
-            featureDict[0] = str(line_fields[0])
-            #    featureDict[0] = int(re.findall(r'\d+', line_fields[0])[0])
-            featureDict[1] = str(re.findall('[a-zA-Z]+', line_fields[0])[0])
-            
-            try:
-                featureDict[2] = int(line_fields[5])
-            except ValueError:
-                featureDict[2] = 999
+            # Avoid uncompleted lines
+            if (len(line_fields)>4):
 
-            featureDict[3] = str(line_fields[1])
-            featureDict[4] = str(line_fields[2])
-            featureDict[5] = str(line_fields[3])
-            featureDict[6] = float(line_fields[4])
-            featureDict[7] = ' '.join(line_fields[6:])
+                # Create the dictionnary
+                featureDict = ['GPSID','TYPE', 'CODE', 'Y', 'X', 'Z', 'DELTA', 'COMMENT']
+                
+                # Extract the information
+                featureDict[0] = str(line_fields[0])
+                #    featureDict[0] = int(re.findall(r'\d+', line_fields[0])[0])
+                featureDict[1] = str(re.findall('[a-zA-Z]+', line_fields[0])[0])
+                
+                try:
+                    featureDict[2] = int(line_fields[5])
+                except ValueError:
+                    featureDict[2] = 999
+    
+                featureDict[3] = str(line_fields[1])
+                featureDict[4] = str(line_fields[2])
+                featureDict[5] = str(line_fields[3])
+                featureDict[6] = float(line_fields[4])
+                featureDict[7] = ' '.join(line_fields[6:])
+                
+                ofilepath = self.shapeDirectory.absolutePath() + '/' + str(featureDict[2]) + '.shp'
+                
+                if not os.path.exists(ofilepath):
+                    dataSource = driver.CreateDataSource(ofilepath)
+                    olayer = dataSource.CreateLayer("points", srs, geom_type=ogr.wkbPoint25D)
+                    olayer.CreateField(ogr.FieldDefn("Point_ID", ogr.OFTString))
+                    olayer.CreateField(ogr.FieldDefn("Ortho_Heig", ogr.OFTReal))
+                else:
+                    dataSource = driver.Open(ofilepath,1)
+                    olayer = dataSource.GetLayer()
+                
+                # print ofilepath
+                
+                # Set feature fields            
+                feature = ogr.Feature(olayer.GetLayerDefn())
+                feature.SetField("Point_ID", featureDict[0])
+                feature.SetField("Ortho_Heig", featureDict[5])
+                
+                # Set geometry
+                geom_wkt = 'POINT (' + featureDict[3] + ' ' + featureDict[4] + ' ' + featureDict[5] + ')'
+                point = ogr.CreateGeometryFromWkt(geom_wkt)
+                feature.SetGeometry(point)
+                
+                # Create feature            
+                olayer.CreateFeature(feature)
+                
+                # remove feature and datasource from memory
+                feature.Destroy()
+                dataSource.Destroy()
             
-            ofilepath = self.shapeDirectory.absolutePath() + '/' + str(featureDict[2]) + '.shp'
+#            else:
+                #additional behaviour in case of uncompleted line
             
-            if not os.path.exists(ofilepath):
-                dataSource = driver.CreateDataSource(ofilepath)
-                olayer = dataSource.CreateLayer("points", srs, geom_type=ogr.wkbPoint25D)
-                olayer.CreateField(ogr.FieldDefn("Point_ID", ogr.OFTString))
-                olayer.CreateField(ogr.FieldDefn("Ortho_Heig", ogr.OFTReal))
-            else:
-                dataSource = driver.Open(ofilepath,1)
-                olayer = dataSource.GetLayer()
-            
-            # print ofilepath
-            
-            # Set feature fields            
-            feature = ogr.Feature(olayer.GetLayerDefn())
-            feature.SetField("Point_ID", featureDict[0])
-            feature.SetField("Ortho_Heig", featureDict[5])
-            
-            # Set geometry
-            geom_wkt = 'POINT (' + featureDict[3] + ' ' + featureDict[4] + ' ' + featureDict[5] + ')'
-            point = ogr.CreateGeometryFromWkt(geom_wkt)
-            feature.SetGeometry(point)
-            
-            # Create feature            
-            olayer.CreateFeature(feature)
-            
-            # remove feature and datasource from memory
-            feature.Destroy()
-            dataSource.Destroy()
             
             # increment            
             ind+=1
-            
-#        self.getShapeFiles()
-
+                
+        
     def setCurrentConfig(self, idConfig):
         """Load configuration from XML based on configuration id.
         :param idConfig: configuration id's stored in XML.
