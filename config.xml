@@ -22,7 +22,7 @@
                         <!-- Nom de la colonne du fichier de données source -->
                         <source>Ortho_Heig</source>
                         <!-- Nom de la colonne de la couche QGis de destination -->
-                        <destination>remark</destination>
+                        <destination>altitude</destination>
                     </columnmapping>
                 </colummappings>
             </pointlayer>
