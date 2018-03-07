@@ -1,0 +1,21 @@
+﻿<?xml version = '1.0' encoding = 'UTF-8'?>
+<plugins>
+    <pyqgis_plugin name="EasyImport" version="1.0.1">
+        <description><![CDATA[EasyImport : Plugin for GPS Import]]></description>
+        <version>1.0.1</version>
+        <qgis_minimum_version>2.0</qgis_minimum_version>
+        <homepage>https://github.com/VilleDePully/EasyImport</homepage>
+        <file_name>master.zip</file_name>
+        <icon>icon.png</icon>
+        <author_name>Xavier Ménétrey</author_name>
+        <download_url>https://github.com/VilleDePully/EasyImport/archive/master.zip</download_url>
+        <uploaded_by>ponceta</uploaded_by>
+        <create_date>2018-03-07T17:00:00.000000</create_date>
+        <update_date>2018-03-07T18:00:00.000000</update_date>
+        <experimental>False</experimental>
+        <deprecated>False</deprecated>
+        <tracker>https://github.com/VilleDePully/EasyImport/issues</tracker>
+        <repository>https://github.com/VilleDePully/EasyImport</repository>
+        <tags>gps,import,network,water,wastewater,electricity</tags>
+    </pyqgis_plugin>
+</plugins>
