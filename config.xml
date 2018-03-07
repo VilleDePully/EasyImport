@@ -1,6 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configs>
-    <!-- Une configuration d'import -->
+    <!-- Configuration Import GPS -->
+    <config id="0" name="Import GPS">
+        <pointlayers>
+            <!-- l'attribut code correspond au nom du fichier de données source sans extension (p.e 300.shp) -->
+            <pointlayer code="0">
+                <!-- Nom de la couche de destination dans le projet QGis (case sensitiv...) -->
+                <destinationlayer>Points</destinationlayer>
+                <colummappings>
+                    <columnmapping>
+                        <!-- Nom de la colonne du fichier de données source -->
+                        <source>Point_ID</source>
+                        <!-- Nom de la colonne de la couche QGis de destination -->
+                        <destination>id_gps_mes</destination>
+                    </columnmapping>
+                    <columnmapping>
+                        <source>Reseau</source>
+                        <destination>reseau</destination>
+                    </columnmapping>
+                    <columnmapping>
+                        <source>Code</source>
+                        <destination>Code</destination>
+                    </columnmapping>
+                    <columnmapping>
+                        <source>Altitude</source>
+                        <destination>altitude</destination>
+                    </columnmapping>
+                    <columnmapping>
+                        <source>Precision</source>
+                        <destination>precision</destination>
+                    </columnmapping>
+                </colummappings>
+            </pointlayer>
+        </pointlayers>
+    </config>
+    <!-- Configuration QWAT -->
     <config id="1" name="Import EP">
         <pointlayers>
             <!-- l'attribut code correspond au nom du fichier de données source sans extension (p.e 300.shp) -->
@@ -13,14 +47,10 @@
                         <source>Point_ID</source>
                         <!-- Nom de la colonne de la couche QGis de destination -->
                         <destination>id</destination>
-                        <!-- Regex permettant de ne garder que la partie numérique de la donnée source -->
-                        <!-- Pour faire un autre regex voir www.debuggex.com et https://docs.python.org/2/howto/regex.html#non-capturing-and-named-groups -->
-                        <!-- le groupe à capturer doit s'appeler "group" -->
-                        <regex>^(?P&lt;group&gt;\d*)</regex>
                     </columnmapping>
                     <columnmapping>
                         <!-- Nom de la colonne du fichier de données source -->
-                        <source>Ortho_Heig</source>
+                        <source>Altitude</source>
                         <!-- Nom de la colonne de la couche QGis de destination -->
                         <destination>altitude</destination>
                     </columnmapping>
@@ -32,10 +62,9 @@
                     <columnmapping>
                         <source>Point_ID</source>
                         <destination>identification</destination>
-                        <regex>^(?P&lt;group&gt;\d*)</regex>
                     </columnmapping>
                     <columnmapping>
-                        <source>Ortho_Heig</source>
+                        <source>Altitude</source>
                         <destination>altitude</destination>
                     </columnmapping>
                 </colummappings>
@@ -46,10 +75,9 @@
                     <columnmapping>
                         <source>Point_ID</source>
                         <destination>identification</destination>
-                        <regex>^(?P&lt;group&gt;\d*)</regex>
                     </columnmapping>
                     <columnmapping>
-                        <source>Ortho_Heig</source>
+                        <source>Altitude</source>
                         <destination>altitude</destination>
                     </columnmapping>
                 </colummappings>
@@ -60,7 +88,6 @@
                     <columnmapping>
                         <source>Point_ID</source>
                         <destination>identification</destination>
-                        <regex>^(?P&lt;group&gt;\d*)</regex>
                     </columnmapping>
                 </colummappings>
                 <staticmappings>
@@ -76,7 +103,6 @@
                     <columnmapping>
                         <source>Point_ID</source>
                         <destination>identification</destination>
-                        <regex>^(?P&lt;group&gt;\d*)</regex>
                     </columnmapping>
                 </colummappings>
                 <staticmappings>
@@ -93,12 +119,11 @@
                     <columnmapping>
                         <source>Point_ID</source>
                         <destination>id</destination>
-                        <regex>^(?P&lt;group&gt;\d*)</regex>
                     </columnmapping>
                 </colummappings>
                 <staticmappings>
                     <staticmapping>
-                        <source>Ortho_Heig</source>
+                        <source>Altitude</source>
                         <destination>altitude</destination>
                     </staticmapping>
                 </staticmappings>
@@ -109,7 +134,6 @@
                     <columnmapping>
                         <source>Point_ID</source>
                         <destination>identification</destination>
-                        <regex>^(?P&lt;group&gt;\d*)</regex>
                     </columnmapping>
                 </colummappings>
                 <staticmappings>
@@ -125,10 +149,9 @@
                     <columnmapping>
                         <source>Point_ID</source>
                         <destination>id</destination>
-                        <regex>^(?P&lt;group&gt;\d*)</regex>
                     </columnmapping>
                     <columnmapping>
-                        <source>Ortho_Heig</source>
+                        <source>Altitude</source>
                         <destination>altitude</destination>
                     </columnmapping>
                 </colummappings>
@@ -139,10 +162,9 @@
                     <columnmapping>
                         <source>Point_ID</source>
                         <destination>id</destination>
-                        <regex>^(?P&lt;group&gt;\d*)</regex>
                     </columnmapping>
                     <columnmapping>
-                        <source>Ortho_Heig</source>
+                        <source>Altitude</source>
                         <destination>altitude</destination>
                     </columnmapping>
                 </colummappings>
@@ -153,10 +175,9 @@
                     <columnmapping>
                         <source>Point_ID</source>
                         <destination>id</destination>
-                        <regex>^(?P&lt;group&gt;\d*)</regex>
                     </columnmapping>
                     <columnmapping>
-                        <source>Ortho_Heig</source>
+                        <source>Altitude</source>
                         <destination>altitude</destination>
                     </columnmapping>
                 </colummappings>
@@ -167,7 +188,6 @@
                     <columnmapping>
                         <source>Point_ID</source>
                         <destination>identification</destination>
-                        <regex>^(?P&lt;group&gt;\d*)</regex>
                     </columnmapping>
                 </colummappings>
                 <staticmappings>
@@ -183,7 +203,6 @@
                     <columnmapping>
                         <source>Point_ID</source>
                         <destination>identification</destination>
-                        <regex>^(?P&lt;group&gt;\d*)</regex>
                     </columnmapping>
                 </colummappings>
                 <staticmappings>
@@ -199,7 +218,6 @@
                     <columnmapping>
                         <source>Point_ID</source>
                         <destination>identification</destination>
-                        <regex>^(?P&lt;group&gt;\d*)</regex>
                     </columnmapping>
                 </colummappings>
                 <staticmappings>
@@ -215,7 +233,6 @@
                     <columnmapping>
                         <source>Point_ID</source>
                         <destination>identification</destination>
-                        <regex>^(?P&lt;group&gt;\d*)</regex>
                     </columnmapping>
                 </colummappings>
                 <staticmappings>
@@ -231,7 +248,6 @@
                     <columnmapping>
                         <source>Point_ID</source>
                         <destination>identification</destination>
-                        <regex>^(?P&lt;group&gt;\d*)</regex>
                     </columnmapping>
                 </colummappings>
                 <staticmappings>
@@ -247,7 +263,6 @@
                     <columnmapping>
                         <source>Point_ID</source>
                         <destination>identification</destination>
-                        <regex>^(?P&lt;group&gt;\d*)</regex>
                     </columnmapping>
                 </colummappings>
                 <staticmappings>
@@ -263,7 +278,6 @@
                     <columnmapping>
                         <source>Point_ID</source>
                         <destination>identification</destination>
-                        <regex>^(?P&lt;group&gt;\d*)</regex>
                     </columnmapping>
                 </colummappings>
                 <staticmappings>
@@ -279,7 +293,6 @@
                     <columnmapping>
                         <source>Point_ID</source>
                         <destination>identification</destination>
-                        <regex>^(?P&lt;group&gt;\d*)</regex>
                     </columnmapping>
                 </colummappings>
                 <staticmappings>
@@ -295,10 +308,9 @@
                     <columnmapping>
                         <source>Point_ID</source>
                         <destination>id</destination>
-                        <regex>^(?P&lt;group&gt;\d*)</regex>
                     </columnmapping>
                     <columnmapping>
-                        <source>Ortho_Heig</source>
+                        <source>Altitude</source>
                         <destination>altitude</destination>
                     </columnmapping>
                 </colummappings>
@@ -309,7 +321,6 @@
                     <columnmapping>
                         <source>Point_ID</source>
                         <destination>identification</destination>
-                        <regex>^(?P&lt;group&gt;\d*)</regex>
                     </columnmapping>
                 </colummappings>
                 <staticmappings>
@@ -325,7 +336,6 @@
                     <columnmapping>
                         <source>Point_ID</source>
                         <destination>identification</destination>
-                        <regex>^(?P&lt;group&gt;\d*)</regex>
                     </columnmapping>
                 </colummappings>
                 <staticmappings>
@@ -341,7 +351,6 @@
                     <columnmapping>
                         <source>Point_ID</source>
                         <destination>identification</destination>
-                        <regex>^(?P&lt;group&gt;\d*)</regex>
                     </columnmapping>
                 </colummappings>
                 <staticmappings>
@@ -357,7 +366,6 @@
                     <columnmapping>
                         <source>Point_ID</source>
                         <destination>identification</destination>
-                        <regex>^(?P&lt;group&gt;\d*)</regex>
                     </columnmapping>
                 </colummappings>
                 <staticmappings>
@@ -373,7 +381,6 @@
                     <columnmapping>
                         <source>Point_ID</source>
                         <destination>identification</destination>
-                        <regex>^(?P&lt;group&gt;\d*)</regex>
                     </columnmapping>
                 </colummappings>
                 <staticmappings>
@@ -389,7 +396,6 @@
                     <columnmapping>
                         <source>Point_ID</source>
                         <destination>identification</destination>
-                        <regex>^(?P&lt;group&gt;\d*)</regex>
                     </columnmapping>
                 </colummappings>
                 <staticmappings>
@@ -405,7 +411,6 @@
                     <columnmapping>
                         <source>Point_ID</source>
                         <destination>identification</destination>
-                        <regex>^(?P&lt;group&gt;\d*)</regex>
                     </columnmapping>
                 </colummappings>
                 <staticmappings>
@@ -421,7 +426,6 @@
                     <columnmapping>
                         <source>Point_ID</source>
                         <destination>identification</destination>
-                        <regex>^(?P&lt;group&gt;\d*)</regex>
                     </columnmapping>
                 </colummappings>
                 <staticmappings>
@@ -437,7 +441,6 @@
                     <columnmapping>
                         <source>Point_ID</source>
                         <destination>identification</destination>
-                        <regex>^(?P&lt;group&gt;\d*)</regex>
                     </columnmapping>
                 </colummappings>
                 <staticmappings>
@@ -453,7 +456,6 @@
                     <columnmapping>
                         <source>Point_ID</source>
                         <destination>identification</destination>
-                        <regex>^(?P&lt;group&gt;\d*)</regex>
                     </columnmapping>
                 </colummappings>
                 <staticmappings>
@@ -469,7 +471,6 @@
                     <columnmapping>
                         <source>Point_ID</source>
                         <destination>identification</destination>
-                        <regex>^(?P&lt;group&gt;\d*)</regex>
                     </columnmapping>
                 </colummappings>
                 <staticmappings>
@@ -485,7 +486,6 @@
                     <columnmapping>
                         <source>Point_ID</source>
                         <destination>identification</destination>
-                        <regex>^(?P&lt;group&gt;\d*)</regex>
                     </columnmapping>
                 </colummappings>
                 <staticmappings>
@@ -501,7 +501,6 @@
                     <columnmapping>
                         <source>Point_ID</source>
                         <destination>identification</destination>
-                        <regex>^(?P&lt;group&gt;\d*)</regex>
                     </columnmapping>
                 </colummappings>
                 <staticmappings>
@@ -510,6 +509,54 @@
                         <destination>fk_part_type</destination>
                     </staticmapping>
                 </staticmappings>
+            </pointlayer>
+        </pointlayers>
+    </config>
+    <!-- Configuration QGEP -->
+    <config id="2" name="Import ASS">
+        <pointlayers>
+            <!-- l'attribut code correspond au nom du fichier de données source sans extension (p.e 300.shp) -->
+            <pointlayer code="410">
+                <!-- Nom de la couche de destination dans le projet QGis (case sensitiv...) -->
+                <destinationlayer>Ouvrages</destinationlayer>
+                <colummappings>
+                    <columnmapping>
+                        <!-- Nom de la colonne du fichier de données source -->
+                        <source>Point_ID</source>
+                        <!-- Nom de la colonne de la couche QGis de destination -->
+                        <destination>identifier</destination>
+                    </columnmapping>
+                    <columnmapping>
+                        <!-- Nom de la colonne du fichier de données source -->
+                        <source>Altitude</source>
+                        <!-- Nom de la colonne de la couche QGis de destination -->
+                        <destination>bottom_level</destination>
+                    </columnmapping>
+                </colummappings>
+            </pointlayer>
+        </pointlayers>
+    </config>
+    <!-- Configuration QELE -->
+    <config id="3" name="Import ELE">
+        <pointlayers>
+            <!-- l'attribut code correspond au nom du fichier de données source sans extension (p.e 300.shp) -->
+            <pointlayer code="410">
+                <!-- Nom de la couche de destination dans le projet QGis (case sensitiv...) -->
+                <destinationlayer>Ouvrages</destinationlayer>
+                <colummappings>
+                    <columnmapping>
+                        <!-- Nom de la colonne du fichier de données source -->
+                        <source>Point_ID</source>
+                        <!-- Nom de la colonne de la couche QGis de destination -->
+                        <destination>identifier</destination>
+                    </columnmapping>
+                    <columnmapping>
+                        <!-- Nom de la colonne du fichier de données source -->
+                        <source>Altitude</source>
+                        <!-- Nom de la colonne de la couche QGis de destination -->
+                        <destination>bottom_level</destination>
+                    </columnmapping>
+                </colummappings>
             </pointlayer>
         </pointlayers>
     </config>

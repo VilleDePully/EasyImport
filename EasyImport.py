@@ -286,7 +286,7 @@ class EasyImport:
                 featureDict = ['GPSID','TYPE', 'CODE', 'Y', 'X', 'Z', 'DELTA', 'COMMENT']
                 
                 # Extract the information
-                featureDict[0] = str(line_fields[0])
+                featureDict[0] = int(re.findall('[0-9]+', line_fields[0])[0])
                 #    featureDict[0] = int(re.findall(r'\d+', line_fields[0])[0])
                 featureDict[1] = str(re.findall('[a-zA-Z]+', line_fields[0])[0])
                 
@@ -297,17 +297,26 @@ class EasyImport:
     
                 featureDict[3] = str(line_fields[1])
                 featureDict[4] = str(line_fields[2])
-                featureDict[5] = str(line_fields[3])
+                featureDict[5] = float(line_fields[3])
                 featureDict[6] = float(line_fields[4])
                 featureDict[7] = ' '.join(line_fields[6:])
-                
-                ofilepath = self.shapeDirectory.absolutePath() + '/' + str(featureDict[2]) + '.shp'
+
+                print(str(self.dlg.cbxConfig.itemData(self.dlg.cbxConfig.currentIndex())))
+                # Set shapefile name with config
+                if int(self.dlg.cbxConfig.itemData(self.dlg.cbxConfig.currentIndex())) == 0:
+                    ofilepath = self.shapeDirectory.absolutePath() + '/0.shp'
+                else:
+                    ofilepath = self.shapeDirectory.absolutePath() + '/' + str(featureDict[2]) + '.shp'
                 
                 if not os.path.exists(ofilepath):
                     dataSource = driver.CreateDataSource(ofilepath)
                     olayer = dataSource.CreateLayer("points", srs, geom_type=ogr.wkbPoint25D)
-                    olayer.CreateField(ogr.FieldDefn("Point_ID", ogr.OFTString))
-                    olayer.CreateField(ogr.FieldDefn("Ortho_Heig", ogr.OFTReal))
+                    olayer.CreateField(ogr.FieldDefn("Point_ID", ogr.OFTInteger))
+                    olayer.CreateField(ogr.FieldDefn("Reseau", ogr.OFTString))
+                    olayer.CreateField(ogr.FieldDefn("Code", ogr.OFTInteger))
+                    olayer.CreateField(ogr.FieldDefn("Altitude", ogr.OFTReal))
+                    olayer.CreateField(ogr.FieldDefn("Precision", ogr.OFTReal))
+                    olayer.CreateField(ogr.FieldDefn("Remarque", ogr.OFTString))
                 else:
                     dataSource = driver.Open(ofilepath,1)
                     olayer = dataSource.GetLayer()
@@ -317,10 +326,14 @@ class EasyImport:
                 # Set feature fields            
                 feature = ogr.Feature(olayer.GetLayerDefn())
                 feature.SetField("Point_ID", featureDict[0])
-                feature.SetField("Ortho_Heig", featureDict[5])
+                feature.SetField("Reseau", featureDict[1])
+                feature.SetField("Code", featureDict[2])
+                feature.SetField("Altitude", featureDict[5])
+                feature.SetField("Precision", featureDict[6])
+                feature.SetField("Remarque", featureDict[7])
                 
                 # Set geometry
-                geom_wkt = 'POINT (' + featureDict[3] + ' ' + featureDict[4] + ' ' + featureDict[5] + ')'
+                geom_wkt = 'POINT (' + featureDict[3] + ' ' + featureDict[4] + ' ' + str(featureDict[5]) + ')'
                 point = ogr.CreateGeometryFromWkt(geom_wkt)
                 feature.SetGeometry(point)
                 
@@ -361,7 +374,7 @@ class EasyImport:
         for index in range(layerspoints.count()):
             if layerspoints.at(index).hasAttributes():
                 self.pointsLayersConfig[layerspoints.at(index).toElement().attributeNode('code').value()] = layerspoints.at(index).toElement()
-        
+
     
     def loadConfig(self):
         """Load configuration combobox with configurations stored in XML configuration file."""
