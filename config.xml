@@ -20,7 +20,7 @@
                     </columnmapping>
                     <columnmapping>
                         <source>Code</source>
-                        <destination>Code</destination>
+                        <destination>code</destination>
                     </columnmapping>
                     <columnmapping>
                         <source>Altitude</source>
@@ -29,6 +29,10 @@
                     <columnmapping>
                         <source>Precision</source>
                         <destination>precision</destination>
+                    </columnmapping>
+                    <columnmapping>
+                        <source>Remarque</source>
+                        <destination>remark</destination>
                     </columnmapping>
                 </colummappings>
             </pointlayer>
@@ -40,7 +44,7 @@
             <!-- l'attribut code correspond au nom du fichier de données source sans extension (p.e 300.shp) -->
             <pointlayer code="300">
                 <!-- Nom de la couche de destination dans le projet QGis (case sensitiv...) -->
-                <destinationlayer>points de construction</destinationlayer>
+                <destinationlayer>Points de construction</destinationlayer>
                 <colummappings>
                     <columnmapping>
                         <!-- Nom de la colonne du fichier de données source -->
@@ -49,10 +53,16 @@
                         <destination>id</destination>
                     </columnmapping>
                     <columnmapping>
-                        <!-- Nom de la colonne du fichier de données source -->
                         <source>Altitude</source>
-                        <!-- Nom de la colonne de la couche QGis de destination -->
                         <destination>altitude</destination>
+                    </columnmapping>
+                    <columnmapping>
+                        <source>Code</source>
+                        <destination>code</destination>
+                    </columnmapping>
+                    <columnmapping>
+                        <source>Remarque</source>
+                        <destination>remark</destination>
                     </columnmapping>
                 </colummappings>
             </pointlayer>
@@ -67,6 +77,10 @@
                         <source>Altitude</source>
                         <destination>altitude</destination>
                     </columnmapping>
+                    <columnmapping>
+                        <source>Remarque</source>
+                        <destination>remark</destination>
+                    </columnmapping>
                 </colummappings>
             </pointlayer>
             <pointlayer code="43"> <!-- Vanne -->
@@ -80,6 +94,10 @@
                         <source>Altitude</source>
                         <destination>altitude</destination>
                     </columnmapping>
+                    <columnmapping>
+                        <source>Remarque</source>
+                        <destination>remark</destination>
+                    </columnmapping>
                 </colummappings>
             </pointlayer>
             <pointlayer code="326"> <!-- Robinet -->
@@ -88,6 +106,14 @@
                     <columnmapping>
                         <source>Point_ID</source>
                         <destination>identification</destination>
+                    </columnmapping>
+                    <columnmapping>
+                        <source>Altitude</source>
+                        <destination>altitude</destination>
+                    </columnmapping>
+                    <columnmapping>
+                        <source>Remarque</source>
+                        <destination>remark</destination>
                     </columnmapping>
                 </colummappings>
                 <staticmappings>
@@ -104,6 +130,14 @@
                         <source>Point_ID</source>
                         <destination>identification</destination>
                     </columnmapping>
+                    <columnmapping>
+                        <source>Altitude</source>
+                        <destination>altitude</destination>
+                    </columnmapping>
+                    <columnmapping>
+                        <source>Remarque</source>
+                        <destination>remark</destination>
+                    </columnmapping>
                 </colummappings>
                 <staticmappings>
                     <staticmapping>
@@ -114,19 +148,25 @@
                 </staticmappings>
             </pointlayer>
             <pointlayer code="328"> <!-- Té -->
-                <destinationlayer>points de construction</destinationlayer>
+                <destinationlayer>Points de construction</destinationlayer>
                 <colummappings>
                     <columnmapping>
                         <source>Point_ID</source>
                         <destination>id</destination>
                     </columnmapping>
-                </colummappings>
-                <staticmappings>
-                    <staticmapping>
+                    <columnmapping>
                         <source>Altitude</source>
                         <destination>altitude</destination>
-                    </staticmapping>
-                </staticmappings>
+                    </columnmapping>
+                    <columnmapping>
+                        <source>Code</source>
+                        <destination>code</destination>
+                    </columnmapping>
+                    <columnmapping>
+                        <source>Remarque</source>
+                        <destination>remark</destination>
+                    </columnmapping>
+                </colummappings>
             </pointlayer>
             <pointlayer code="329"> <!-- Croix -->
                 <destinationlayer>Pièces d'installations</destinationlayer>
@@ -134,6 +174,14 @@
                     <columnmapping>
                         <source>Point_ID</source>
                         <destination>identification</destination>
+                    </columnmapping>
+                    <columnmapping>
+                        <source>Altitude</source>
+                        <destination>altitude</destination>
+                    </columnmapping>
+                    <columnmapping>
+                        <source>Remarque</source>
+                        <destination>remark</destination>
                     </columnmapping>
                 </colummappings>
                 <staticmappings>
@@ -144,7 +192,7 @@
                 </staticmappings>
             </pointlayer>
             <pointlayer code="330"> <!-- Réduction -->
-                <destinationlayer>points de construction</destinationlayer>
+                <destinationlayer>Points de construction</destinationlayer>
                 <colummappings>
                     <columnmapping>
                         <source>Point_ID</source>
@@ -153,11 +201,19 @@
                     <columnmapping>
                         <source>Altitude</source>
                         <destination>altitude</destination>
+                    </columnmapping>
+                    <columnmapping>
+                        <source>Code</source>
+                        <destination>code</destination>
+                    </columnmapping>
+                    <columnmapping>
+                        <source>Remarque</source>
+                        <destination>remark</destination>
                     </columnmapping>
                 </colummappings>
             </pointlayer>
             <pointlayer code="331"> <!-- Changement année construction -->
-                <destinationlayer>points de construction</destinationlayer>
+                <destinationlayer>Points de construction</destinationlayer>
                 <colummappings>
                     <columnmapping>
                         <source>Point_ID</source>
@@ -166,11 +222,19 @@
                     <columnmapping>
                         <source>Altitude</source>
                         <destination>altitude</destination>
+                    </columnmapping>
+                    <columnmapping>
+                        <source>Code</source>
+                        <destination>code</destination>
+                    </columnmapping>
+                    <columnmapping>
+                        <source>Remarque</source>
+                        <destination>remark</destination>
                     </columnmapping>
                 </colummappings>
             </pointlayer>
             <pointlayer code="332"> <!-- Changement de pente -->
-                <destinationlayer>points de construction</destinationlayer>
+                <destinationlayer>Points de construction</destinationlayer>
                 <colummappings>
                     <columnmapping>
                         <source>Point_ID</source>
@@ -179,6 +243,14 @@
                     <columnmapping>
                         <source>Altitude</source>
                         <destination>altitude</destination>
+                    </columnmapping>
+                    <columnmapping>
+                        <source>Code</source>
+                        <destination>code</destination>
+                    </columnmapping>
+                    <columnmapping>
+                        <source>Remarque</source>
+                        <destination>remark</destination>
                     </columnmapping>
                 </colummappings>
             </pointlayer>
@@ -188,6 +260,14 @@
                     <columnmapping>
                         <source>Point_ID</source>
                         <destination>identification</destination>
+                    </columnmapping>
+                    <columnmapping>
+                        <source>Altitude</source>
+                        <destination>altitude</destination>
+                    </columnmapping>
+                    <columnmapping>
+                        <source>Remarque</source>
+                        <destination>remark</destination>
                     </columnmapping>
                 </colummappings>
                 <staticmappings>
@@ -204,6 +284,14 @@
                         <source>Point_ID</source>
                         <destination>identification</destination>
                     </columnmapping>
+                    <columnmapping>
+                        <source>Altitude</source>
+                        <destination>altitude</destination>
+                    </columnmapping>
+                    <columnmapping>
+                        <source>Remarque</source>
+                        <destination>remark</destination>
+                    </columnmapping>
                 </colummappings>
                 <staticmappings>
                     <staticmapping>
@@ -218,6 +306,14 @@
                     <columnmapping>
                         <source>Point_ID</source>
                         <destination>identification</destination>
+                    </columnmapping>
+                    <columnmapping>
+                        <source>Altitude</source>
+                        <destination>altitude</destination>
+                    </columnmapping>
+                    <columnmapping>
+                        <source>Remarque</source>
+                        <destination>remark</destination>
                     </columnmapping>
                 </colummappings>
                 <staticmappings>
@@ -234,6 +330,14 @@
                         <source>Point_ID</source>
                         <destination>identification</destination>
                     </columnmapping>
+                    <columnmapping>
+                        <source>Altitude</source>
+                        <destination>altitude</destination>
+                    </columnmapping>
+                    <columnmapping>
+                        <source>Remarque</source>
+                        <destination>remark</destination>
+                    </columnmapping>
                 </colummappings>
                 <staticmappings>
                     <staticmapping>
@@ -248,6 +352,14 @@
                     <columnmapping>
                         <source>Point_ID</source>
                         <destination>identification</destination>
+                    </columnmapping>
+                    <columnmapping>
+                        <source>Altitude</source>
+                        <destination>altitude</destination>
+                    </columnmapping>
+                    <columnmapping>
+                        <source>Remarque</source>
+                        <destination>remark</destination>
                     </columnmapping>
                 </colummappings>
                 <staticmappings>
@@ -264,6 +376,14 @@
                         <source>Point_ID</source>
                         <destination>identification</destination>
                     </columnmapping>
+                    <columnmapping>
+                        <source>Altitude</source>
+                        <destination>altitude</destination>
+                    </columnmapping>
+                    <columnmapping>
+                        <source>Remarque</source>
+                        <destination>remark</destination>
+                    </columnmapping>
                 </colummappings>
                 <staticmappings>
                     <staticmapping>
@@ -278,6 +398,14 @@
                     <columnmapping>
                         <source>Point_ID</source>
                         <destination>identification</destination>
+                    </columnmapping>
+                    <columnmapping>
+                        <source>Altitude</source>
+                        <destination>altitude</destination>
+                    </columnmapping>
+                    <columnmapping>
+                        <source>Remarque</source>
+                        <destination>remark</destination>
                     </columnmapping>
                 </colummappings>
                 <staticmappings>
@@ -294,6 +422,14 @@
                         <source>Point_ID</source>
                         <destination>identification</destination>
                     </columnmapping>
+                    <columnmapping>
+                        <source>Altitude</source>
+                        <destination>altitude</destination>
+                    </columnmapping>
+                    <columnmapping>
+                        <source>Remarque</source>
+                        <destination>remark</destination>
+                    </columnmapping>
                 </colummappings>
                 <staticmappings>
                     <staticmapping>
@@ -303,7 +439,7 @@
                 </staticmappings>
             </pointlayer>
             <pointlayer code="341"> <!-- Changement de matériau -->
-                <destinationlayer>points de construction</destinationlayer>
+                <destinationlayer>Points de construction</destinationlayer>
                 <colummappings>
                     <columnmapping>
                         <source>Point_ID</source>
@@ -313,6 +449,14 @@
                         <source>Altitude</source>
                         <destination>altitude</destination>
                     </columnmapping>
+                    <columnmapping>
+                        <source>Code</source>
+                        <destination>code</destination>
+                    </columnmapping>
+                    <columnmapping>
+                        <source>Remarque</source>
+                        <destination>remark</destination>
+                    </columnmapping>
                 </colummappings>
             </pointlayer>
             <pointlayer code="342"> <!-- Collier de prise -->
@@ -321,6 +465,14 @@
                     <columnmapping>
                         <source>Point_ID</source>
                         <destination>identification</destination>
+                    </columnmapping>
+                    <columnmapping>
+                        <source>Altitude</source>
+                        <destination>altitude</destination>
+                    </columnmapping>
+                    <columnmapping>
+                        <source>Remarque</source>
+                        <destination>remark</destination>
                     </columnmapping>
                 </colummappings>
                 <staticmappings>
@@ -337,6 +489,14 @@
                         <source>Point_ID</source>
                         <destination>identification</destination>
                     </columnmapping>
+                    <columnmapping>
+                        <source>Altitude</source>
+                        <destination>altitude</destination>
+                    </columnmapping>
+                    <columnmapping>
+                        <source>Remarque</source>
+                        <destination>remark</destination>
+                    </columnmapping>
                 </colummappings>
                 <staticmappings>
                     <staticmapping>
@@ -351,6 +511,14 @@
                     <columnmapping>
                         <source>Point_ID</source>
                         <destination>identification</destination>
+                    </columnmapping>
+                    <columnmapping>
+                        <source>Altitude</source>
+                        <destination>altitude</destination>
+                    </columnmapping>
+                    <columnmapping>
+                        <source>Remarque</source>
+                        <destination>remark</destination>
                     </columnmapping>
                 </colummappings>
                 <staticmappings>
@@ -367,6 +535,14 @@
                         <source>Point_ID</source>
                         <destination>identification</destination>
                     </columnmapping>
+                    <columnmapping>
+                        <source>Altitude</source>
+                        <destination>altitude</destination>
+                    </columnmapping>
+                    <columnmapping>
+                        <source>Remarque</source>
+                        <destination>remark</destination>
+                    </columnmapping>
                 </colummappings>
                 <staticmappings>
                     <staticmapping>
@@ -381,6 +557,14 @@
                     <columnmapping>
                         <source>Point_ID</source>
                         <destination>identification</destination>
+                    </columnmapping>
+                    <columnmapping>
+                        <source>Altitude</source>
+                        <destination>altitude</destination>
+                    </columnmapping>
+                    <columnmapping>
+                        <source>Remarque</source>
+                        <destination>remark</destination>
                     </columnmapping>
                 </colummappings>
                 <staticmappings>
@@ -397,6 +581,14 @@
                         <source>Point_ID</source>
                         <destination>identification</destination>
                     </columnmapping>
+                    <columnmapping>
+                        <source>Altitude</source>
+                        <destination>altitude</destination>
+                    </columnmapping>
+                    <columnmapping>
+                        <source>Remarque</source>
+                        <destination>remark</destination>
+                    </columnmapping>
                 </colummappings>
                 <staticmappings>
                     <staticmapping>
@@ -411,6 +603,14 @@
                     <columnmapping>
                         <source>Point_ID</source>
                         <destination>identification</destination>
+                    </columnmapping>
+                    <columnmapping>
+                        <source>Altitude</source>
+                        <destination>altitude</destination>
+                    </columnmapping>
+                    <columnmapping>
+                        <source>Remarque</source>
+                        <destination>remark</destination>
                     </columnmapping>
                 </colummappings>
                 <staticmappings>
@@ -427,6 +627,14 @@
                         <source>Point_ID</source>
                         <destination>identification</destination>
                     </columnmapping>
+                    <columnmapping>
+                        <source>Altitude</source>
+                        <destination>altitude</destination>
+                    </columnmapping>
+                    <columnmapping>
+                        <source>Remarque</source>
+                        <destination>remark</destination>
+                    </columnmapping>
                 </colummappings>
                 <staticmappings>
                     <staticmapping>
@@ -441,6 +649,14 @@
                     <columnmapping>
                         <source>Point_ID</source>
                         <destination>identification</destination>
+                    </columnmapping>
+                    <columnmapping>
+                        <source>Altitude</source>
+                        <destination>altitude</destination>
+                    </columnmapping>
+                    <columnmapping>
+                        <source>Remarque</source>
+                        <destination>remark</destination>
                     </columnmapping>
                 </colummappings>
                 <staticmappings>
@@ -457,6 +673,14 @@
                         <source>Point_ID</source>
                         <destination>identification</destination>
                     </columnmapping>
+                    <columnmapping>
+                        <source>Altitude</source>
+                        <destination>altitude</destination>
+                    </columnmapping>
+                    <columnmapping>
+                        <source>Remarque</source>
+                        <destination>remark</destination>
+                    </columnmapping>
                 </colummappings>
                 <staticmappings>
                     <staticmapping>
@@ -471,6 +695,14 @@
                     <columnmapping>
                         <source>Point_ID</source>
                         <destination>identification</destination>
+                    </columnmapping>
+                    <columnmapping>
+                        <source>Altitude</source>
+                        <destination>altitude</destination>
+                    </columnmapping>
+                    <columnmapping>
+                        <source>Remarque</source>
+                        <destination>remark</destination>
                     </columnmapping>
                 </colummappings>
                 <staticmappings>
@@ -487,6 +719,14 @@
                         <source>Point_ID</source>
                         <destination>identification</destination>
                     </columnmapping>
+                    <columnmapping>
+                        <source>Altitude</source>
+                        <destination>altitude</destination>
+                    </columnmapping>
+                    <columnmapping>
+                        <source>Remarque</source>
+                        <destination>remark</destination>
+                    </columnmapping>
                 </colummappings>
                 <staticmappings>
                     <staticmapping>
@@ -502,6 +742,14 @@
                         <source>Point_ID</source>
                         <destination>identification</destination>
                     </columnmapping>
+                    <columnmapping>
+                        <source>Altitude</source>
+                        <destination>altitude</destination>
+                    </columnmapping>
+                    <columnmapping>
+                        <source>Remarque</source>
+                        <destination>remark</destination>
+                    </columnmapping>
                 </colummappings>
                 <staticmappings>
                     <staticmapping>
@@ -515,22 +763,541 @@
     <!-- Configuration QGEP -->
     <config id="2" name="Import ASS">
         <pointlayers>
-            <!-- l'attribut code correspond au nom du fichier de données source sans extension (p.e 300.shp) -->
-            <pointlayer code="410">
-                <!-- Nom de la couche de destination dans le projet QGis (case sensitiv...) -->
+            <pointlayer code="400"><!-- Point de détail -->
+                <destinationlayer>Points de construction</destinationlayer>
+                <colummappings>
+                    <columnmapping>
+                        <source>Point_ID</source>
+                        <destination>id</destination>
+                    </columnmapping>
+                    <columnmapping>
+                        <source>Altitude</source>
+                        <destination>altitude</destination>
+                    </columnmapping>
+                    <columnmapping>
+                        <source>Code</source>
+                        <destination>code</destination>
+                    </columnmapping>
+                    <columnmapping>
+                        <source>Remarque</source>
+                        <destination>remark</destination>
+                    </columnmapping>
+                </colummappings>
+            </pointlayer>
+            <pointlayer code="401"><!-- Point de conduite -->
                 <destinationlayer>Ouvrages</destinationlayer>
                 <colummappings>
                     <columnmapping>
-                        <!-- Nom de la colonne du fichier de données source -->
-                        <source>Point_ID</source>
-                        <!-- Nom de la colonne de la couche QGis de destination -->
-                        <destination>identifier</destination>
+                        <source>Altitude</source>
+                        <destination>level</destination>
                     </columnmapping>
                     <columnmapping>
-                        <!-- Nom de la colonne du fichier de données source -->
+                        <source>Remarque</source>
+                        <destination>remark</destination>
+                    </columnmapping>
+                </colummappings>
+            </pointlayer>
+            <pointlayer code="402"><!-- coin de mur -->
+                <destinationlayer>Points de construction</destinationlayer>
+                <colummappings>
+                    <columnmapping>
+                        <source>Point_ID</source>
+                        <destination>id</destination>
+                    </columnmapping>
+                    <columnmapping>
                         <source>Altitude</source>
-                        <!-- Nom de la colonne de la couche QGis de destination -->
-                        <destination>bottom_level</destination>
+                        <destination>altitude</destination>
+                    </columnmapping>
+                    <columnmapping>
+                        <source>Code</source>
+                        <destination>code</destination>
+                    </columnmapping>
+                    <columnmapping>
+                        <source>Remarque</source>
+                        <destination>remark</destination>
+                    </columnmapping>
+                </colummappings>
+            </pointlayer>
+            <pointlayer code="403"><!-- Point de raccordement -->
+                <destinationlayer>Points de construction</destinationlayer>
+                <colummappings>
+                    <columnmapping>
+                        <source>Point_ID</source>
+                        <destination>id</destination>
+                    </columnmapping>
+                    <columnmapping>
+                        <source>Altitude</source>
+                        <destination>altitude</destination>
+                    </columnmapping>
+                    <columnmapping>
+                        <source>Code</source>
+                        <destination>code</destination>
+                    </columnmapping>
+                    <columnmapping>
+                        <source>Remarque</source>
+                        <destination>remark</destination>
+                    </columnmapping>
+                </colummappings>
+            </pointlayer>
+            <pointlayer code="410"><!-- Regard de visite -->
+                <destinationlayer>Points de construction</destinationlayer>
+                <colummappings>
+                    <columnmapping>
+                        <source>Point_ID</source>
+                        <destination>id</destination>
+                    </columnmapping>
+                    <columnmapping>
+                        <source>Altitude</source>
+                        <destination>altitude</destination>
+                    </columnmapping>
+                    <columnmapping>
+                        <source>Code</source>
+                        <destination>code</destination>
+                    </columnmapping>
+                    <columnmapping>
+                        <source>Remarque</source>
+                        <destination>remark</destination>
+                    </columnmapping>
+                </colummappings>
+            </pointlayer>
+            <pointlayer code="411"><!-- Bassin de décantation -->
+                <destinationlayer>Points de construction</destinationlayer>
+                <colummappings>
+                    <columnmapping>
+                        <source>Point_ID</source>
+                        <destination>id</destination>
+                    </columnmapping>
+                    <columnmapping>
+                        <source>Altitude</source>
+                        <destination>altitude</destination>
+                    </columnmapping>
+                    <columnmapping>
+                        <source>Code</source>
+                        <destination>code</destination>
+                    </columnmapping>
+                    <columnmapping>
+                        <source>Remarque</source>
+                        <destination>remark</destination>
+                    </columnmapping>
+                </colummappings>
+            </pointlayer>
+            <pointlayer code="412"><!-- Ouvrage de chute -->
+                <destinationlayer>Points de construction</destinationlayer>
+                <colummappings>
+                    <columnmapping>
+                        <source>Point_ID</source>
+                        <destination>id</destination>
+                    </columnmapping>
+                    <columnmapping>
+                        <source>Altitude</source>
+                        <destination>altitude</destination>
+                    </columnmapping>
+                    <columnmapping>
+                        <source>Code</source>
+                        <destination>code</destination>
+                    </columnmapping>
+                    <columnmapping>
+                        <source>Remarque</source>
+                        <destination>remark</destination>
+                    </columnmapping>
+                </colummappings>
+            </pointlayer>
+            <pointlayer code="413"><!-- Séparateur d'hydrocarbures -->
+                <destinationlayer>Points de construction</destinationlayer>
+                <colummappings>
+                    <columnmapping>
+                        <source>Point_ID</source>
+                        <destination>id</destination>
+                    </columnmapping>
+                    <columnmapping>
+                        <source>Altitude</source>
+                        <destination>altitude</destination>
+                    </columnmapping>
+                    <columnmapping>
+                        <source>Code</source>
+                        <destination>code</destination>
+                    </columnmapping>
+                    <columnmapping>
+                        <source>Remarque</source>
+                        <destination>remark</destination>
+                    </columnmapping>
+                </colummappings>
+            </pointlayer>
+            <pointlayer code="414"><!-- Changement d'année de construction -->
+                <destinationlayer>Points de construction</destinationlayer>
+                <colummappings>
+                    <columnmapping>
+                        <source>Point_ID</source>
+                        <destination>id</destination>
+                    </columnmapping>
+                    <columnmapping>
+                        <source>Altitude</source>
+                        <destination>altitude</destination>
+                    </columnmapping>
+                    <columnmapping>
+                        <source>Code</source>
+                        <destination>code</destination>
+                    </columnmapping>
+                    <columnmapping>
+                        <source>Remarque</source>
+                        <destination>remark</destination>
+                    </columnmapping>
+                </colummappings>
+            </pointlayer>
+            <pointlayer code="415"><!-- Séparateur de graisse -->
+                <destinationlayer>Points de construction</destinationlayer>
+                <colummappings>
+                    <columnmapping>
+                        <source>Point_ID</source>
+                        <destination>id</destination>
+                    </columnmapping>
+                    <columnmapping>
+                        <source>Altitude</source>
+                        <destination>altitude</destination>
+                    </columnmapping>
+                    <columnmapping>
+                        <source>Code</source>
+                        <destination>code</destination>
+                    </columnmapping>
+                    <columnmapping>
+                        <source>Remarque</source>
+                        <destination>remark</destination>
+                    </columnmapping>
+                </colummappings>
+            </pointlayer>
+            <pointlayer code="416"><!-- Changement de pente -->
+                <destinationlayer>Points de construction</destinationlayer>
+                <colummappings>
+                    <columnmapping>
+                        <source>Point_ID</source>
+                        <destination>id</destination>
+                    </columnmapping>
+                    <columnmapping>
+                        <source>Altitude</source>
+                        <destination>altitude</destination>
+                    </columnmapping>
+                    <columnmapping>
+                        <source>Code</source>
+                        <destination>code</destination>
+                    </columnmapping>
+                    <columnmapping>
+                        <source>Remarque</source>
+                        <destination>remark</destination>
+                    </columnmapping>
+                </colummappings>
+            </pointlayer>
+            <pointlayer code="417"><!-- Début de canal -->
+                <destinationlayer>Points de construction</destinationlayer>
+                <colummappings>
+                    <columnmapping>
+                        <source>Point_ID</source>
+                        <destination>id</destination>
+                    </columnmapping>
+                    <columnmapping>
+                        <source>Altitude</source>
+                        <destination>altitude</destination>
+                    </columnmapping>
+                    <columnmapping>
+                        <source>Code</source>
+                        <destination>code</destination>
+                    </columnmapping>
+                    <columnmapping>
+                        <source>Remarque</source>
+                        <destination>remark</destination>
+                    </columnmapping>
+                </colummappings>
+            </pointlayer>
+            <pointlayer code="418"><!-- Fosse septique -->
+                <destinationlayer>Points de construction</destinationlayer>
+                <colummappings>
+                    <columnmapping>
+                        <source>Point_ID</source>
+                        <destination>id</destination>
+                    </columnmapping>
+                    <columnmapping>
+                        <source>Altitude</source>
+                        <destination>altitude</destination>
+                    </columnmapping>
+                    <columnmapping>
+                        <source>Code</source>
+                        <destination>code</destination>
+                    </columnmapping>
+                    <columnmapping>
+                        <source>Remarque</source>
+                        <destination>remark</destination>
+                    </columnmapping>
+                </colummappings>
+            </pointlayer>
+            <pointlayer code="419"><!-- Changement de dimension -->
+                <destinationlayer>Points de construction</destinationlayer>
+                <colummappings>
+                    <columnmapping>
+                        <source>Point_ID</source>
+                        <destination>id</destination>
+                    </columnmapping>
+                    <columnmapping>
+                        <source>Altitude</source>
+                        <destination>altitude</destination>
+                    </columnmapping>
+                    <columnmapping>
+                        <source>Code</source>
+                        <destination>code</destination>
+                    </columnmapping>
+                    <columnmapping>
+                        <source>Remarque</source>
+                        <destination>remark</destination>
+                    </columnmapping>
+                </colummappings>
+            </pointlayer>
+            <pointlayer code="420"><!-- Changement de calibre/matériau -->
+                <destinationlayer>Points de construction</destinationlayer>
+                <colummappings>
+                    <columnmapping>
+                        <source>Point_ID</source>
+                        <destination>id</destination>
+                    </columnmapping>
+                    <columnmapping>
+                        <source>Altitude</source>
+                        <destination>altitude</destination>
+                    </columnmapping>
+                    <columnmapping>
+                        <source>Code</source>
+                        <destination>code</destination>
+                    </columnmapping>
+                    <columnmapping>
+                        <source>Remarque</source>
+                        <destination>remark</destination>
+                    </columnmapping>
+                </colummappings>
+            </pointlayer>
+            <pointlayer code="421"><!-- Chambre de contrôle normalisée -->
+                <destinationlayer>Points de construction</destinationlayer>
+                <colummappings>
+                    <columnmapping>
+                        <source>Point_ID</source>
+                        <destination>id</destination>
+                    </columnmapping>
+                    <columnmapping>
+                        <source>Altitude</source>
+                        <destination>altitude</destination>
+                    </columnmapping>
+                    <columnmapping>
+                        <source>Code</source>
+                        <destination>code</destination>
+                    </columnmapping>
+                    <columnmapping>
+                        <source>Remarque</source>
+                        <destination>remark</destination>
+                    </columnmapping>
+                </colummappings>
+            </pointlayer>
+            <pointlayer code="422"><!-- Changement de matériau -->
+                <destinationlayer>Points de construction</destinationlayer>
+                <colummappings>
+                    <columnmapping>
+                        <source>Point_ID</source>
+                        <destination>id</destination>
+                    </columnmapping>
+                    <columnmapping>
+                        <source>Altitude</source>
+                        <destination>altitude</destination>
+                    </columnmapping>
+                    <columnmapping>
+                        <source>Code</source>
+                        <destination>code</destination>
+                    </columnmapping>
+                    <columnmapping>
+                        <source>Remarque</source>
+                        <destination>remark</destination>
+                    </columnmapping>
+                </colummappings>
+            </pointlayer>
+            <pointlayer code="423"><!-- Chambre avec pompe -->
+                <destinationlayer>Points de construction</destinationlayer>
+                <colummappings>
+                    <columnmapping>
+                        <source>Point_ID</source>
+                        <destination>id</destination>
+                    </columnmapping>
+                    <columnmapping>
+                        <source>Altitude</source>
+                        <destination>altitude</destination>
+                    </columnmapping>
+                    <columnmapping>
+                        <source>Code</source>
+                        <destination>code</destination>
+                    </columnmapping>
+                    <columnmapping>
+                        <source>Remarque</source>
+                        <destination>remark</destination>
+                    </columnmapping>
+                </colummappings>
+            </pointlayer>
+            <pointlayer code="424"><!-- Chambre de contrôle normalisée -->
+                <destinationlayer>Points de construction</destinationlayer>
+                <colummappings>
+                    <columnmapping>
+                        <source>Point_ID</source>
+                        <destination>id</destination>
+                    </columnmapping>
+                    <columnmapping>
+                        <source>Altitude</source>
+                        <destination>altitude</destination>
+                    </columnmapping>
+                    <columnmapping>
+                        <source>Code</source>
+                        <destination>code</destination>
+                    </columnmapping>
+                    <columnmapping>
+                        <source>Remarque</source>
+                        <destination>remark</destination>
+                    </columnmapping>
+                </colummappings>
+            </pointlayer>
+            <pointlayer code="425"><!-- Chambre de récolte des eaux de toiture -->
+                <destinationlayer>Points de construction</destinationlayer>
+                <colummappings>
+                    <columnmapping>
+                        <source>Point_ID</source>
+                        <destination>id</destination>
+                    </columnmapping>
+                    <columnmapping>
+                        <source>Altitude</source>
+                        <destination>altitude</destination>
+                    </columnmapping>
+                    <columnmapping>
+                        <source>Code</source>
+                        <destination>code</destination>
+                    </columnmapping>
+                    <columnmapping>
+                        <source>Remarque</source>
+                        <destination>remark</destination>
+                    </columnmapping>
+                </colummappings>
+            </pointlayer>
+            <pointlayer code="426"><!-- Dépotoir -->
+                <destinationlayer>Points de construction</destinationlayer>
+                <colummappings>
+                    <columnmapping>
+                        <source>Point_ID</source>
+                        <destination>id</destination>
+                    </columnmapping>
+                    <columnmapping>
+                        <source>Altitude</source>
+                        <destination>altitude</destination>
+                    </columnmapping>
+                    <columnmapping>
+                        <source>Code</source>
+                        <destination>code</destination>
+                    </columnmapping>
+                    <columnmapping>
+                        <source>Remarque</source>
+                        <destination>remark</destination>
+                    </columnmapping>
+                </colummappings>
+            </pointlayer>
+            <pointlayer code="427"><!-- Chambre spéciale -->
+                <destinationlayer>Points de construction</destinationlayer>
+                <colummappings>
+                    <columnmapping>
+                        <source>Point_ID</source>
+                        <destination>id</destination>
+                    </columnmapping>
+                    <columnmapping>
+                        <source>Altitude</source>
+                        <destination>altitude</destination>
+                    </columnmapping>
+                    <columnmapping>
+                        <source>Code</source>
+                        <destination>code</destination>
+                    </columnmapping>
+                    <columnmapping>
+                        <source>Remarque</source>
+                        <destination>remark</destination>
+                    </columnmapping>
+                </colummappings>
+            </pointlayer>
+            <pointlayer code="428"><!-- Inconnu -->
+                <destinationlayer>Points de construction</destinationlayer>
+                <colummappings>
+                    <columnmapping>
+                        <source>Point_ID</source>
+                        <destination>id</destination>
+                    </columnmapping>
+                    <columnmapping>
+                        <source>Altitude</source>
+                        <destination>altitude</destination>
+                    </columnmapping>
+                    <columnmapping>
+                        <source>Code</source>
+                        <destination>code</destination>
+                    </columnmapping>
+                    <columnmapping>
+                        <source>Remarque</source>
+                        <destination>remark</destination>
+                    </columnmapping>
+                </colummappings>
+            </pointlayer>
+            <pointlayer code="429"><!-- Rejet au milieu récepteur -->
+                <destinationlayer>Points de construction</destinationlayer>
+                <colummappings>
+                    <columnmapping>
+                        <source>Point_ID</source>
+                        <destination>id</destination>
+                    </columnmapping>
+                    <columnmapping>
+                        <source>Altitude</source>
+                        <destination>altitude</destination>
+                    </columnmapping>
+                    <columnmapping>
+                        <source>Code</source>
+                        <destination>code</destination>
+                    </columnmapping>
+                    <columnmapping>
+                        <source>Remarque</source>
+                        <destination>remark</destination>
+                    </columnmapping>
+                </colummappings>
+            </pointlayer>
+            <pointlayer code="430"><!-- Puit d'infiltration -->
+                <destinationlayer>Points de construction</destinationlayer>
+                <colummappings>
+                    <columnmapping>
+                        <source>Point_ID</source>
+                        <destination>id</destination>
+                    </columnmapping>
+                    <columnmapping>
+                        <source>Altitude</source>
+                        <destination>altitude</destination>
+                    </columnmapping>
+                    <columnmapping>
+                        <source>Code</source>
+                        <destination>code</destination>
+                    </columnmapping>
+                    <columnmapping>
+                        <source>Remarque</source>
+                        <destination>remark</destination>
+                    </columnmapping>
+                </colummappings>
+            </pointlayer>
+            <pointlayer code="431"><!-- Raccord collecteur -->
+                <destinationlayer>Points de construction</destinationlayer>
+                <colummappings>
+                    <columnmapping>
+                        <source>Point_ID</source>
+                        <destination>id</destination>
+                    </columnmapping>
+                    <columnmapping>
+                        <source>Altitude</source>
+                        <destination>altitude</destination>
+                    </columnmapping>
+                    <columnmapping>
+                        <source>Code</source>
+                        <destination>code</destination>
+                    </columnmapping>
+                    <columnmapping>
+                        <source>Remarque</source>
+                        <destination>remark</destination>
                     </columnmapping>
                 </colummappings>
             </pointlayer>

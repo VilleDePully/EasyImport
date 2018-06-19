@@ -7,9 +7,9 @@
                               -------------------
         begin                : 2015-01-16
         git sha              : $Format:%H$
-        copyright            : (C) 2015 by Ville de Pully
+        copyright            : (C) 2015-2018 by Ville de Pully
         email                : informatique@pully.ch
-        author               : Xavier Menetrey
+        author               : Xavier Menetrey, Arnaud Poncet-Montanges
  ***************************************************************************/
 
 /***************************************************************************
@@ -249,7 +249,7 @@ class EasyImport:
         """Get each asciifile in defined folder."""
         
 #        self.asciiFiles.clear()
-        asciifiles = self.shapeDirectory.entryList(['*.asc'],QDir.Files,QDir.Name)
+        asciifiles = self.shapeDirectory.entryList(['*.asc','*.prn'],QDir.Files,QDir.Name)
         for file in asciifiles:            
             # Convert into shapefile
             self.ascii2shape(file)
@@ -291,15 +291,15 @@ class EasyImport:
                 featureDict[1] = str(re.findall('[a-zA-Z]+', line_fields[0])[0])
                 
                 try:
-                    featureDict[2] = int(line_fields[5])
+                    featureDict[2] = str(line_fields[5])
                 except ValueError:
-                    featureDict[2] = 999
+                    featureDict[2] = '999'
     
-                featureDict[3] = str(line_fields[1])
-                featureDict[4] = str(line_fields[2])
-                featureDict[5] = float(line_fields[3])
-                featureDict[6] = float(line_fields[4])
-                featureDict[7] = ' '.join(line_fields[6:])
+                featureDict[3] = str(line_fields[1]) # Y
+                featureDict[4] = str(line_fields[2]) # X
+                featureDict[5] = float(line_fields[3]) # Z
+                featureDict[6] = float(line_fields[4]) # Delta
+                featureDict[7] = ' '.join(line_fields[6:]) # Comment
 
                 print(str(self.dlg.cbxConfig.itemData(self.dlg.cbxConfig.currentIndex())))
                 # Set shapefile name with config
@@ -313,7 +313,7 @@ class EasyImport:
                     olayer = dataSource.CreateLayer("points", srs, geom_type=ogr.wkbPoint25D)
                     olayer.CreateField(ogr.FieldDefn("Point_ID", ogr.OFTInteger))
                     olayer.CreateField(ogr.FieldDefn("Reseau", ogr.OFTString))
-                    olayer.CreateField(ogr.FieldDefn("Code", ogr.OFTInteger))
+                    olayer.CreateField(ogr.FieldDefn("Code", ogr.OFTString))
                     olayer.CreateField(ogr.FieldDefn("Altitude", ogr.OFTReal))
                     olayer.CreateField(ogr.FieldDefn("Precision", ogr.OFTReal))
                     olayer.CreateField(ogr.FieldDefn("Remarque", ogr.OFTString))
@@ -492,6 +492,9 @@ class EasyImport:
         
             #Create new feature in destination layer and get geometry from shapefile
             newFeature = QgsFeature(fields)
+            initFields = destinationlayer.dataProvider().fields()
+            newFeature.setFields(initFields)
+            newFeature.initAttributes(initFields.size())
             newFeature.setGeometry(QgsGeometry.fromWkt(str(feature.GetGeometryRef())))
                         
             # For each column mapping
@@ -517,6 +520,13 @@ class EasyImport:
             for k in staticMappingDict.keys():
                 #print "destination %s -> value %s" % (k,staticMappingDict[k])
                 newFeature.setAttribute(fields.fieldNameIndex(k), staticMappingDict[k])
+                
+            # Get default value for oid
+            # See https://github.com/qgis/QGIS/pull/5378
+            # When migrating to QGIS 3, remove following line 
+            # and use QgsVectorLayerUtils.createFeature instead of layer.addFeature
+            if destinationlayer.fieldNameIndex('obj_id') >= 0:
+                newFeature['obj_id'] = destinationlayer.dataProvider().defaultValue(destinationlayer.fieldNameIndex('obj_id'))
             
             # Add new feature in destination layer
             destinationlayer.addFeature(newFeature, True)
