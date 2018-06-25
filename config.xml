@@ -785,11 +785,19 @@
                 </colummappings>
             </pointlayer>
             <pointlayer code="401"><!-- Point de conduite -->
-                <destinationlayer>Ouvrages</destinationlayer>
+                <destinationlayer>Points de construction</destinationlayer>
                 <colummappings>
                     <columnmapping>
+                        <source>Point_ID</source>
+                        <destination>id</destination>
+                    </columnmapping>
+                    <columnmapping>
                         <source>Altitude</source>
-                        <destination>level</destination>
+                        <destination>altitude</destination>
+                    </columnmapping>
+                    <columnmapping>
+                        <source>Code</source>
+                        <destination>code</destination>
                     </columnmapping>
                     <columnmapping>
                         <source>Remarque</source>
