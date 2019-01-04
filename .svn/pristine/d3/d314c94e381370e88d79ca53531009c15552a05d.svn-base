@@ -1,0 +1,503 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configs>
+    <!-- Une configuration d'import -->
+    <config id="1" name="Import EP">
+        <pointlayers>
+            <!-- l'attribut code correspond au nom du fichier de données source sans extension (p.e 300.shp) -->
+            <pointlayer code="300">
+                <!-- Nom de la couche de destination dans le projet QGis (case sensitiv...) -->
+                <destinationlayer>points de construction</destinationlayer>
+                <colummappings>
+                    <columnmapping>
+                        <!-- Nom de la colonne du fichier de données source -->
+                        <source>Point_ID</source>
+                        <!-- Nom de la colonne de la couche QGis de destination -->
+                        <destination>id</destination>
+                        <!-- Regex permettant de ne garder que la partie numérique de la donnée source -->
+                        <!-- Pour faire un autre regex voir www.debuggex.com et https://docs.python.org/2/howto/regex.html#non-capturing-and-named-groups -->
+                        <!-- le groupe à captuer doit s'appeler "group" -->
+                        <regex>^(?P&lt;group&gt;\d*)</regex>
+                    </columnmapping>
+                    <columnmapping>
+                        <!-- Nom de la colonne du fichier de données source -->
+                        <source>Ortho_Heig</source>
+                        <!-- Nom de la colonne de la couche QGis de destination -->
+                        <destination>remark</destination>
+                    </columnmapping>
+                </colummappings>
+            </pointlayer>
+            <pointlayer code="43">
+                <destinationlayer>vannes</destinationlayer>
+                <colummappings>
+                    <columnmapping>
+                        <source>Point_ID</source>
+                        <destination>identification</destination>
+                        <regex>^(?P&lt;group&gt;\d*)</regex>
+                    </columnmapping>
+                    <columnmapping>
+                        <source>Ortho_Heig</source>
+                        <destination>altitude_real</destination>
+                    </columnmapping>
+                </colummappings>
+            </pointlayer>
+            <pointlayer code="332">
+                <destinationlayer>Pièces d'installation</destinationlayer>
+                <colummappings>
+                    <columnmapping>
+                        <source>Point_ID</source>
+                        <destination>identification</destination>
+                        <regex>^(?P&lt;group&gt;\d*)</regex>
+                    </columnmapping>
+                </colummappings>
+                <staticmappings>
+                    <staticmapping>
+                        <!-- Valeur statique à placer dans la colonne de destination -->
+                        <value>332</value>
+                        <!-- Nom de la colonne de la couche QGis de destination -->
+                        <destination>id_type</destination>
+                    </staticmapping>
+                </staticmappings>
+            </pointlayer>
+            <pointlayer code="345">
+                <destinationlayer>Pièces d'installation</destinationlayer>
+                <colummappings>
+                    <columnmapping>
+                        <source>Point_ID</source>
+                        <destination>identification</destination>
+                        <regex>^(?P&lt;group&gt;\d*)</regex>
+                    </columnmapping>
+                </colummappings>
+                <staticmappings>
+                    <staticmapping>
+                        <value>345</value>
+                        <destination>id_type</destination>
+                    </staticmapping>
+                </staticmappings>
+            </pointlayer>
+            <pointlayer code="340">
+                <destinationlayer>Pièces d'installation</destinationlayer>
+                <colummappings>
+                    <columnmapping>
+                        <source>Point_ID</source>
+                        <destination>identification</destination>
+                        <regex>^(?P&lt;group&gt;\d*)</regex>
+                    </columnmapping>
+                </colummappings>
+                <staticmappings>
+                    <staticmapping>
+                        <value>340</value>
+                        <destination>id_type</destination>
+                    </staticmapping>
+                </staticmappings>
+            </pointlayer>
+            <pointlayer code="351">
+                <destinationlayer>Pièces d'installation</destinationlayer>
+                <colummappings>
+                    <columnmapping>
+                        <source>Point_ID</source>
+                        <destination>identification</destination>
+                        <regex>^(?P&lt;group&gt;\d*)</regex>
+                    </columnmapping>
+                </colummappings>
+                <staticmappings>
+                    <staticmapping>
+                        <value>351</value>
+                        <destination>id_type</destination>
+                    </staticmapping>
+                </staticmappings>
+            </pointlayer>
+            <pointlayer code="331">
+                <destinationlayer>points de construction</destinationlayer>
+                <colummappings>
+                    <columnmapping>
+                        <source>Point_ID</source>
+                        <destination>id</destination>
+                        <regex>^(?P&lt;group&gt;\d*)</regex>
+                    </columnmapping>
+                    <columnmapping>
+                        <source>Ortho_Heig</source>
+                        <destination>remark</destination>
+                    </columnmapping>
+                </colummappings>
+            </pointlayer>
+            <pointlayer code="341">
+                <destinationlayer>points de construction</destinationlayer>
+                <colummappings>
+                    <columnmapping>
+                        <source>Point_ID</source>
+                        <destination>id</destination>
+                        <regex>^(?P&lt;group&gt;\d*)</regex>
+                    </columnmapping>
+                    <columnmapping>
+                        <source>Ortho_Heig</source>
+                        <destination>remark</destination>
+                    </columnmapping>
+                </colummappings>
+            </pointlayer>
+            <pointlayer code="346">
+                <destinationlayer>Pièces d'installation</destinationlayer>
+                <colummappings>
+                    <columnmapping>
+                        <source>Point_ID</source>
+                        <destination>identification</destination>
+                        <regex>^(?P&lt;group&gt;\d*)</regex>
+                    </columnmapping>
+                </colummappings>
+                <staticmappings>
+                    <staticmapping>
+                        <value>346</value>
+                        <destination>id_type</destination>
+                    </staticmapping>
+                </staticmappings>
+            </pointlayer>
+            <pointlayer code="342">
+                <destinationlayer>Pièces d'installation</destinationlayer>
+                <colummappings>
+                    <columnmapping>
+                        <source>Point_ID</source>
+                        <destination>identification</destination>
+                        <regex>^(?P&lt;group&gt;\d*)</regex>
+                    </columnmapping>
+                </colummappings>
+                <staticmappings>
+                    <staticmapping>
+                        <value>342</value>
+                        <destination>id_type</destination>
+                    </staticmapping>
+                </staticmappings>
+            </pointlayer>
+            <pointlayer code="334">
+                <destinationlayer>Pièces d'installation</destinationlayer>
+                <colummappings>
+                    <columnmapping>
+                        <source>Point_ID</source>
+                        <destination>identification</destination>
+                        <regex>^(?P&lt;group&gt;\d*)</regex>
+                    </columnmapping>
+                </colummappings>
+                <staticmappings>
+                    <staticmapping>
+                        <value>334</value>
+                        <destination>id_type</destination>
+                    </staticmapping>
+                </staticmappings>
+            </pointlayer>
+            <pointlayer code="329">
+                <destinationlayer>Pièces d'installation</destinationlayer>
+                <colummappings>
+                    <columnmapping>
+                        <source>Point_ID</source>
+                        <destination>identification</destination>
+                        <regex>^(?P&lt;group&gt;\d*)</regex>
+                    </columnmapping>
+                </colummappings>
+                <staticmappings>
+                    <staticmapping>
+                        <value>329</value>
+                        <destination>id_type</destination>
+                    </staticmapping>
+                </staticmappings>
+            </pointlayer>
+            <pointlayer code="349">
+                <destinationlayer>Pièces d'installation</destinationlayer>
+                <colummappings>
+                    <columnmapping>
+                        <source>Point_ID</source>
+                        <destination>identification</destination>
+                        <regex>^(?P&lt;group&gt;\d*)</regex>
+                    </columnmapping>
+                </colummappings>
+                <staticmappings>
+                    <staticmapping>
+                        <value>349</value>
+                        <destination>id_type</destination>
+                    </staticmapping>
+                </staticmappings>
+            </pointlayer>
+            <pointlayer code="350">
+                <destinationlayer>Pièces d'installation</destinationlayer>
+                <colummappings>
+                    <columnmapping>
+                        <source>Point_ID</source>
+                        <destination>identification</destination>
+                        <regex>^(?P&lt;group&gt;\d*)</regex>
+                    </columnmapping>
+                </colummappings>
+                <staticmappings>
+                    <staticmapping>
+                        <value>350</value>
+                        <destination>id_type</destination>
+                    </staticmapping>
+                </staticmappings>
+            </pointlayer>
+            <pointlayer code="354">
+                <destinationlayer>Pièces d'installation</destinationlayer>
+                <colummappings>
+                    <columnmapping>
+                        <source>Point_ID</source>
+                        <destination>identification</destination>
+                        <regex>^(?P&lt;group&gt;\d*)</regex>
+                    </columnmapping>
+                </colummappings>
+                <staticmappings>
+                    <staticmapping>
+                        <value>354</value>
+                        <destination>id_type</destination>
+                    </staticmapping>
+                </staticmappings>
+            </pointlayer>
+            <pointlayer code="335">
+                <destinationlayer>Pièces d'installation</destinationlayer>
+                <colummappings>
+                    <columnmapping>
+                        <source>Point_ID</source>
+                        <destination>identification</destination>
+                        <regex>^(?P&lt;group&gt;\d*)</regex>
+                    </columnmapping>
+                </colummappings>
+                <staticmappings>
+                    <staticmapping>
+                        <value>335</value>
+                        <destination>id_type</destination>
+                    </staticmapping>
+                </staticmappings>
+            </pointlayer>
+            <pointlayer code="344">
+                <destinationlayer>Pièces d'installation</destinationlayer>
+                <colummappings>
+                    <columnmapping>
+                        <source>Point_ID</source>
+                        <destination>identification</destination>
+                        <regex>^(?P&lt;group&gt;\d*)</regex>
+                    </columnmapping>
+                </colummappings>
+                <staticmappings>
+                    <staticmapping>
+                        <value>344</value>
+                        <destination>id_type</destination>
+                    </staticmapping>
+                </staticmappings>
+            </pointlayer>
+            <pointlayer code="347">
+                <destinationlayer>Pièces d'installation</destinationlayer>
+                <colummappings>
+                    <columnmapping>
+                        <source>Point_ID</source>
+                        <destination>identification</destination>
+                        <regex>^(?P&lt;group&gt;\d*)</regex>
+                    </columnmapping>
+                </colummappings>
+                <staticmappings>
+                    <staticmapping>
+                        <value>347</value>
+                        <destination>id_type</destination>
+                    </staticmapping>
+                </staticmappings>
+            </pointlayer>
+            <pointlayer code="337">
+                <destinationlayer>Pièces d'installation</destinationlayer>
+                <colummappings>
+                    <columnmapping>
+                        <source>Point_ID</source>
+                        <destination>identification</destination>
+                        <regex>^(?P&lt;group&gt;\d*)</regex>
+                    </columnmapping>
+                </colummappings>
+                <staticmappings>
+                    <staticmapping>
+                        <value>337</value>
+                        <destination>id_type</destination>
+                    </staticmapping>
+                </staticmappings>
+            </pointlayer>
+            <pointlayer code="336">
+                <destinationlayer>Pièces d'installation</destinationlayer>
+                <colummappings>
+                    <columnmapping>
+                        <source>Point_ID</source>
+                        <destination>identification</destination>
+                        <regex>^(?P&lt;group&gt;\d*)</regex>
+                    </columnmapping>
+                </colummappings>
+                <staticmappings>
+                    <staticmapping>
+                        <value>336</value>
+                        <destination>id_type</destination>
+                    </staticmapping>
+                </staticmappings>
+            </pointlayer>
+            <pointlayer code="338">
+                <destinationlayer>Pièces d'installation</destinationlayer>
+                <colummappings>
+                    <columnmapping>
+                        <source>Point_ID</source>
+                        <destination>identification</destination>
+                        <regex>^(?P&lt;group&gt;\d*)</regex>
+                    </columnmapping>
+                </colummappings>
+                <staticmappings>
+                    <staticmapping>
+                        <value>338</value>
+                        <destination>id_type</destination>
+                    </staticmapping>
+                </staticmappings>
+            </pointlayer>
+            <pointlayer code="339">
+                <destinationlayer>Pièces d'installation</destinationlayer>
+                <colummappings>
+                    <columnmapping>
+                        <source>Point_ID</source>
+                        <destination>identification</destination>
+                        <regex>^(?P&lt;group&gt;\d*)</regex>
+                    </columnmapping>
+                </colummappings>
+                <staticmappings>
+                    <staticmapping>
+                        <value>339</value>
+                        <destination>id_type</destination>
+                    </staticmapping>
+                </staticmappings>
+            </pointlayer>
+            <pointlayer code="343">
+                <destinationlayer>Pièces d'installation</destinationlayer>
+                <colummappings>
+                    <columnmapping>
+                        <source>Point_ID</source>
+                        <destination>identification</destination>
+                        <regex>^(?P&lt;group&gt;\d*)</regex>
+                    </columnmapping>
+                </colummappings>
+                <staticmappings>
+                    <staticmapping>
+                        <value>343</value>
+                        <destination>id_type</destination>
+                    </staticmapping>
+                </staticmappings>
+            </pointlayer>
+            <pointlayer code="333">
+                <destinationlayer>Pièces d'installation</destinationlayer>
+                <colummappings>
+                    <columnmapping>
+                        <source>Point_ID</source>
+                        <destination>identification</destination>
+                        <regex>^(?P&lt;group&gt;\d*)</regex>
+                    </columnmapping>
+                </colummappings>
+                <staticmappings>
+                    <staticmapping>
+                        <value>333</value>
+                        <destination>id_type</destination>
+                    </staticmapping>
+                </staticmappings>
+            </pointlayer>
+            <pointlayer code="330">
+                <destinationlayer>points de construction</destinationlayer>
+                <colummappings>
+                    <columnmapping>
+                        <source>Point_ID</source>
+                        <destination>id</destination>
+                        <regex>^(?P&lt;group&gt;\d*)</regex>
+                    </columnmapping>
+                    <columnmapping>
+                        <source>Ortho_Heig</source>
+                        <destination>remark</destination>
+                    </columnmapping>
+                </colummappings>
+            </pointlayer>
+            <pointlayer code="326">
+                <destinationlayer>Pièces d'installation</destinationlayer>
+                <colummappings>
+                    <columnmapping>
+                        <source>Point_ID</source>
+                        <destination>identification</destination>
+                        <regex>^(?P&lt;group&gt;\d*)</regex>
+                    </columnmapping>
+                </colummappings>
+                <staticmappings>
+                    <staticmapping>
+                        <value>326</value>
+                        <destination>id_type</destination>
+                    </staticmapping>
+                </staticmappings>
+            </pointlayer>
+            <pointlayer code="327">
+                <destinationlayer>Pièces d'installation</destinationlayer>
+                <colummappings>
+                    <columnmapping>
+                        <source>Point_ID</source>
+                        <destination>identification</destination>
+                        <regex>^(?P&lt;group&gt;\d*)</regex>
+                    </columnmapping>
+                </colummappings>
+                <staticmappings>
+                    <staticmapping>
+                        <value>327</value>
+                        <destination>id_type</destination>
+                    </staticmapping>
+                </staticmappings>
+            </pointlayer>
+            <pointlayer code="348">
+                <destinationlayer>Pièces d'installation</destinationlayer>
+                <colummappings>
+                    <columnmapping>
+                        <source>Point_ID</source>
+                        <destination>identification</destination>
+                        <regex>^(?P&lt;group&gt;\d*)</regex>
+                    </columnmapping>
+                </colummappings>
+                <staticmappings>
+                    <staticmapping>
+                        <value>348</value>
+                        <destination>id_type</destination>
+                    </staticmapping>
+                </staticmappings>
+            </pointlayer>
+            <pointlayer code="328">
+                <destinationlayer>points de construction</destinationlayer>
+                <colummappings>
+                    <columnmapping>
+                        <source>Point_ID</source>
+                        <destination>id</destination>
+                        <regex>^(?P&lt;group&gt;\d*)</regex>
+                    </columnmapping>
+                    <columnmapping>
+                        <source>Ortho_Heig</source>
+                        <destination>remark</destination>
+                    </columnmapping>
+                </colummappings>
+            </pointlayer>
+            <pointlayer code="353">
+                <destinationlayer>Pièces d'installation</destinationlayer>
+                <colummappings>
+                    <columnmapping>
+                        <source>Point_ID</source>
+                        <destination>identification</destination>
+                        <regex>^(?P&lt;group&gt;\d*)</regex>
+                    </columnmapping>
+                </colummappings>
+                <staticmappings>
+                    <staticmapping>
+                        <value>353</value>
+                        <destination>id_type</destination>
+                    </staticmapping>
+                </staticmappings>
+            </pointlayer>
+            <pointlayer code="352">
+                <destinationlayer>Pièces d'installation</destinationlayer>
+                <colummappings>
+                    <columnmapping>
+                        <source>Point_ID</source>
+                        <destination>identification</destination>
+                        <regex>^(?P&lt;group&gt;\d*)</regex>
+                    </columnmapping>
+                </colummappings>
+                <staticmappings>
+                    <staticmapping>
+                        <value>352</value>
+                        <destination>id_type</destination>
+                    </staticmapping>
+                </staticmappings>
+            </pointlayer>
+        </pointlayers>
+    </config>
+</configs>

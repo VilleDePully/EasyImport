@@ -1,0 +1,24 @@
+# Mandatory items:
+[general]
+name=EasyImport
+qgisMinimumVersion=2.0
+qgisMaximumVersion=2.99
+description=EasyImport : Plugin for GPS Import
+version=1.1.0
+
+# Optional items:
+# changelog=
+homepage=https://github.com/VilleDePully/EasyImport
+tracker=https://github.com/VilleDePully/EasyImport/issues
+repository=https://github.com/VilleDePully/QGIS_Plugins
+
+# tags are comma separated with spaces allowed
+tags=gps,import,network,water,wastewater,electricity
+icon=icon.png
+
+experimental=False
+deprecated=False
+
+# Author contact information
+author=Xavier Ménétrey, Arnaud Poncet-Montanges - Ville de Pully
+email=informatique@pully.ch

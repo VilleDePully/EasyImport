@@ -1,0 +1,553 @@
+# -*- coding: utf-8 -*-
+"""
+/***************************************************************************
+ EasyImport
+                                 A QGIS plugin
+ EasyImport
+                              -------------------
+        begin                : 2015-01-16
+        git sha              : $Format:%H$
+        copyright            : (C) 2015 by Ville de Pully
+        email                : informatique@pully.ch
+        author               : Xavier Menetrey
+ ***************************************************************************/
+
+/***************************************************************************
+ *                                                                         *
+ *   This program is free software; you can redistribute it and/or modify  *
+ *   it under the terms of the GNU General Public License as published by  *
+ *   the Free Software Foundation; either version 2 of the License, or     *
+ *   (at your option) any later version.                                   *
+ *                                                                         *
+ ***************************************************************************/
+"""
+
+from PyQt4.QtCore import QSettings, QTranslator, qVersion, QCoreApplication, QFile, QByteArray, QBuffer, QIODevice, QDir
+from PyQt4.QtGui import QAction, QIcon, QMessageBox, QFileDialog
+from PyQt4 import QtXml
+from PyQt4.QtXmlPatterns import QXmlQuery
+# Initialize Qt resources from file resources.py
+import resources_rc
+
+import re
+import os
+# Import the code for the dialog
+from EasyImport_dialog import EasyImportDialog
+from osgeo import ogr
+from osgeo import osr
+from qgis.core import QgsMapLayerRegistry, QgsFeature, QgsGeometry
+from glob import glob
+
+
+
+class EasyImport:
+    """QGIS Plugin Implementation."""
+
+    def __init__(self, iface):
+        """Constructor.
+
+        :param iface: An interface instance that will be passed to this class
+            which provides the hook by which you can manipulate the QGIS
+            application at run time.
+        :type iface: QgsInterface
+        """
+        # Save reference to the QGIS interface
+        self.iface = iface
+        # initialize plugin directory
+        self.plugin_dir = os.path.dirname(__file__)
+        # initialize locale
+        locale = QSettings().value('locale/userLocale')[0:2]
+        locale_path = os.path.join(
+            self.plugin_dir,
+            'i18n',
+            'EasyImport_{}.qm'.format(locale))
+
+        if os.path.exists(locale_path):
+            self.translator = QTranslator()
+            self.translator.load(locale_path)
+
+            if qVersion() > '4.3.3':
+                QCoreApplication.installTranslator(self.translator)
+
+        # Create the dialog (after translation) and keep reference
+        self.dlg = EasyImportDialog()
+
+        # Declare instance attributes
+        self.actions = []
+        self.menu = self.tr(u'&EasyImport')
+        # TODO: We are going to let the user set this up in a future iteration
+        self.toolbar = self.iface.addToolBar(u'EasyImport')
+        self.toolbar.setObjectName(u'EasyImport')
+        
+        # Root folder where shape files are stored
+        self.shapeDirectory =  QDir()
+        
+        # XML Config file
+        self.configXML = QtXml.QDomDocument()
+        
+        # XML current Config
+        self.currentConfigXML = QtXml.QDomElement()
+        
+        # XML Config path
+        self.configFileName = 'config.xml'
+        
+        # Shape file dictionnary
+        # shapeFiles[shape filename] = shapefile absolute path
+        self.shapeFiles = {}
+        
+        # Shape file dictionnary
+        # pointsLayersConfig[shape filename] = Import rules XML nodes
+        self.pointsLayersConfig = {}
+
+    # noinspection PyMethodMayBeStatic
+    def tr(self, message):
+        """Get the translation for a string using Qt translation API.
+
+        We implement this ourselves since we do not inherit QObject.
+
+        :param message: String for translation.
+        :type message: str, QString
+
+        :returns: Translated version of message.
+        :rtype: QString
+        """
+        # noinspection PyTypeChecker,PyArgumentList,PyCallByClass
+        return QCoreApplication.translate('EasyImport', message)
+
+
+    def add_action(
+        self,
+        icon_path,
+        text,
+        callback,
+        enabled_flag=True,
+        add_to_menu=True,
+        add_to_toolbar=True,
+        status_tip=None,
+        whats_this=None,
+        parent=None):
+        """Add a toolbar icon to the toolbar.
+
+        :param icon_path: Path to the icon for this action. Can be a resource
+            path (e.g. ':/plugins/foo/bar.png') or a normal file system path.
+        :type icon_path: str
+
+        :param text: Text that should be shown in menu items for this action.
+        :type text: str
+
+        :param callback: Function to be called when the action is triggered.
+        :type callback: function
+
+        :param enabled_flag: A flag indicating if the action should be enabled
+            by default. Defaults to True.
+        :type enabled_flag: bool
+
+        :param add_to_menu: Flag indicating whether the action should also
+            be added to the menu. Defaults to True.
+        :type add_to_menu: bool
+
+        :param add_to_toolbar: Flag indicating whether the action should also
+            be added to the toolbar. Defaults to True.
+        :type add_to_toolbar: bool
+
+        :param status_tip: Optional text to show in a popup when mouse pointer
+            hovers over the action.
+        :type status_tip: str
+
+        :param parent: Parent widget for the new action. Defaults None.
+        :type parent: QWidget
+
+        :param whats_this: Optional text to show in the status bar when the
+            mouse pointer hovers over the action.
+
+        :returns: The action that was created. Note that the action is also
+            added to self.actions list.
+        :rtype: QAction
+        """
+
+        icon = QIcon(icon_path)
+        action = QAction(icon, text, parent)
+        action.triggered.connect(callback)
+        action.setEnabled(enabled_flag)
+
+        if status_tip is not None:
+            action.setStatusTip(status_tip)
+
+        if whats_this is not None:
+            action.setWhatsThis(whats_this)
+
+        if add_to_toolbar:
+            self.toolbar.addAction(action)
+
+        if add_to_menu:
+            self.iface.addPluginToMenu(
+                self.menu,
+                action)
+
+        self.actions.append(action)
+
+        return action
+
+    def initGui(self):
+        """Create the menu entries and toolbar icons inside the QGIS GUI."""
+
+        icon_path = ':/plugins/EasyImport/icon.png'
+        self.add_action(
+            icon_path,
+            text=self.tr(u'EasyImport'),
+            callback=self.run,
+            parent=self.iface.mainWindow())
+            
+        # Load settings from XML
+        self.loadConfig()
+        
+        # Set event handlers
+        self.dlg.btnBrowse.clicked.connect(self.setShapeDirectory)
+        self.dlg.btnImport.clicked.connect(self.runImport)
+        self.dlg.cbxConfig.currentIndexChanged.connect(self.cbxConfigChanged)
+        self.dlg.txtDirectory.textEdited.connect(self.txtDirectoryChanged)
+        
+    
+    def txtDirectoryChanged(self, text):
+        self.shapeDirectory = QDir(text)
+        self.getShapeFiles()
+    
+    def setShapeDirectory(self):
+        """Display folder browser dialog."""
+    
+        file = QFileDialog.getExistingDirectory(None, 'Select gps/shape file directory.')
+        self.dlg.txtDirectory.setText(file)
+        self.shapeDirectory = QDir(file)
+    
+    def cbxConfigChanged(self, id):
+        """Reset config on configuration combox box changes."""
+         
+        self.pointsLayersConfig.clear()
+        self.setCurrentConfig(self.dlg.cbxConfig.itemData(id))
+    
+    def getShapeFiles(self):
+        """Get each shapefile in defined folder."""
+    
+        self.shapeFiles.clear()
+        shapefiles = self.shapeDirectory.entryList(['*.shp'],QDir.Files,QDir.Name)
+        for file in shapefiles:
+            # Populate the shape dictionnary
+            self.shapeFiles[file.split('.',1)[0]] = file
+            # print self.shapeFiles.keys()
+            
+    def removeShapeFiles(self, shapeFiles):
+        """Removes generated shapefiles"""
+        
+        for code in shapeFiles.keys():
+            paths = str(self.shapeDirectory.absolutePath() + '/' + code + '.*')
+            files = glob(paths)
+            # print paths
+            for file in files:
+                os.remove(file)
+            
+    def getAsciiFiles(self):
+        """Get each asciifile in defined folder."""
+        
+#        self.asciiFiles.clear()
+        asciifiles = self.shapeDirectory.entryList(['*.asc'],QDir.Files,QDir.Name)
+        for file in asciifiles:            
+            # Convert into shapefile
+            self.ascii2shape(file)
+            
+    def ascii2shape(self, file):
+        """Convert every input from the ascii file to the corresponding
+        shapefile and creates it if it does not exists yet.
+        :param file: ascii file to be converted"""
+
+        # Read ascii
+        with open(self.shapeDirectory.absolutePath() + '/' + file,'r') as f:
+            content = f.readlines()
+
+        ind = 0
+
+        # Set spatial ref and driver
+        driver = ogr.GetDriverByName('ESRI Shapefile')
+        srs = osr.SpatialReference()
+        epsg21781wkt = 'PROJCS["CH1903 / LV03",GEOGCS["CH1903",DATUM["CH1903",SPHEROID["Bessel 1841",6377397.155,299.1528128,AUTHORITY["EPSG","7004"]],TOWGS84[674.374,15.056,405.346,0,0,0,0],AUTHORITY["EPSG","6149"]],PRIMEM["Greenwich",0,AUTHORITY["EPSG","8901"]],UNIT["degree",0.01745329251994328,AUTHORITY["EPSG","9122"]],AUTHORITY["EPSG","4149"]],UNIT["metre",1,AUTHORITY["EPSG","9001"]],PROJECTION["Hotine_Oblique_Mercator"],PARAMETER["latitude_of_center",46.95240555555556],PARAMETER["longitude_of_center",7.439583333333333],PARAMETER["azimuth",90],PARAMETER["rectified_grid_angle",90],PARAMETER["scale_factor",1],PARAMETER["false_easting",600000],PARAMETER["false_northing",200000],AUTHORITY["EPSG","21781"],AXIS["Y",EAST],AXIS["X",NORTH]]'
+        srs.ImportFromWkt(epsg21781wkt)
+        
+        # Start iteration on features
+        for line in content:
+            # Remove undesirables tabs and double spaces
+            removedTabs = re.sub(r"\s+", " ", content[ind])
+        
+            # split fields values
+            line_fields = removedTabs.split(' ')
+            
+            # Avoid uncompleted lines
+            if (len(line_fields)>4):
+
+                # Create the dictionnary
+                featureDict = ['GPSID','TYPE', 'CODE', 'Y', 'X', 'Z', 'DELTA', 'COMMENT']
+                
+                # Extract the information
+                featureDict[0] = int(re.findall('[0-9]+', line_fields[0])[0])
+                #    featureDict[0] = int(re.findall(r'\d+', line_fields[0])[0])
+                featureDict[1] = str(re.findall('[a-zA-Z]+', line_fields[0])[0])
+                
+                try:
+                    featureDict[2] = int(line_fields[5])
+                except ValueError:
+                    featureDict[2] = 999
+    
+                featureDict[3] = str(line_fields[1])
+                featureDict[4] = str(line_fields[2])
+                featureDict[5] = float(line_fields[3])
+                featureDict[6] = float(line_fields[4])
+                featureDict[7] = ' '.join(line_fields[6:])
+
+                print(str(self.dlg.cbxConfig.itemData(self.dlg.cbxConfig.currentIndex())))
+                # Set shapefile name with config
+                if int(self.dlg.cbxConfig.itemData(self.dlg.cbxConfig.currentIndex())) == 0:
+                    ofilepath = self.shapeDirectory.absolutePath() + '/0.shp'
+                else:
+                    ofilepath = self.shapeDirectory.absolutePath() + '/' + str(featureDict[2]) + '.shp'
+                
+                if not os.path.exists(ofilepath):
+                    dataSource = driver.CreateDataSource(ofilepath)
+                    olayer = dataSource.CreateLayer("points", srs, geom_type=ogr.wkbPoint25D)
+                    olayer.CreateField(ogr.FieldDefn("Point_ID", ogr.OFTInteger))
+                    olayer.CreateField(ogr.FieldDefn("Reseau", ogr.OFTString))
+                    olayer.CreateField(ogr.FieldDefn("Code", ogr.OFTInteger))
+                    olayer.CreateField(ogr.FieldDefn("Altitude", ogr.OFTReal))
+                    olayer.CreateField(ogr.FieldDefn("Precision", ogr.OFTReal))
+                    olayer.CreateField(ogr.FieldDefn("Remarque", ogr.OFTString))
+                else:
+                    dataSource = driver.Open(ofilepath,1)
+                    olayer = dataSource.GetLayer()
+                
+                # print ofilepath
+                
+                # Set feature fields            
+                feature = ogr.Feature(olayer.GetLayerDefn())
+                feature.SetField("Point_ID", featureDict[0])
+                feature.SetField("Reseau", featureDict[1])
+                feature.SetField("Code", featureDict[2])
+                feature.SetField("Altitude", featureDict[5])
+                feature.SetField("Precision", featureDict[6])
+                feature.SetField("Remarque", featureDict[7])
+                
+                # Set geometry
+                geom_wkt = 'POINT (' + featureDict[3] + ' ' + featureDict[4] + ' ' + str(featureDict[5]) + ')'
+                point = ogr.CreateGeometryFromWkt(geom_wkt)
+                feature.SetGeometry(point)
+                
+                # Create feature            
+                olayer.CreateFeature(feature)
+                
+                # remove feature and datasource from memory
+                feature.Destroy()
+                dataSource.Destroy()
+            
+#            else:
+                #additional behaviour in case of uncompleted line
+            
+            
+            # increment            
+            ind+=1
+                
+        
+    def setCurrentConfig(self, idConfig):
+        """Load configuration from XML based on configuration id.
+        :param idConfig: configuration id's stored in XML.
+        :type text: str
+        """
+        
+        # Get config node childrens if config id = idConfig
+        root = self.configXML.documentElement()
+        configs = root.elementsByTagName('config')
+        for index in range(configs.count()):
+            if configs.at(index).hasAttributes():
+                nodeAttributes = configs.at(index).attributes()
+                if nodeAttributes.namedItem('id').nodeValue() == idConfig:
+                    self.currentConfigXML = configs.at(index)
+        
+        # Get all pointlayer nodes
+        layerspoints = self.currentConfigXML.toElement().elementsByTagName('pointlayer')
+        
+        # Populate import rules (pointsLayersConfig)
+        for index in range(layerspoints.count()):
+            if layerspoints.at(index).hasAttributes():
+                self.pointsLayersConfig[layerspoints.at(index).toElement().attributeNode('code').value()] = layerspoints.at(index).toElement()
+
+    
+    def loadConfig(self):
+        """Load configuration combobox with configurations stored in XML configuration file."""
+    
+        XMLFile = QFile(self.plugin_dir  + '/' +  self.configFileName)
+        if not XMLFile.open(QFile.ReadOnly | QFile.Text):
+            QMessageBox.warning(self.iface.mainWindow(), "XML Configuration","Cannot read file %s:\n%s." % (self.plugin_dir + '/' + self.configFileName, XMLFile.errorString()),QMessageBox.Ok)
+            return False
+        ok, errorStr, errorLine, errorColumn = self.configXML.setContent(XMLFile, True)
+        if not ok:
+            QMessageBox.information(self.iface.mainWindow(), "XML Configuration","Parse error at line %d, column %d:\n%s" % (errorLine, errorColumn, errorStr))
+            return False
+        
+        root = self.configXML.documentElement()
+        
+        configs = root.elementsByTagName('config')
+        
+        for index in range(configs.count()):
+            if configs.at(index).hasAttributes():
+                nodeAttributes = configs.at(index).attributes()
+                self.dlg.cbxConfig.addItem(nodeAttributes.namedItem('name').nodeValue(), nodeAttributes.namedItem('id').nodeValue())
+                
+        self.setCurrentConfig(self.dlg.cbxConfig.itemData(self.dlg.cbxConfig.currentIndex()))
+        return True
+  
+    
+    def runImport(self):
+        self.getAsciiFiles()
+        self.getShapeFiles()        
+        
+        if len(self.shapeFiles) <= 0:
+            QMessageBox.warning(self.iface.mainWindow(), "Shape import","No shape file found.")
+            return  
+        
+        #Shapefiles that match the config code
+        codes = set(self.shapeFiles.keys()) & set(self.pointsLayersConfig.keys())
+
+        # Maximum value of progress bar is the number of shapefile
+        self.dlg.pgbImport.setMaximum(len(codes))
+        
+        # For each Shapefiles that match the config code
+        for k in codes:
+            # Import data based on config
+            self.importData(self.shapeDirectory.absolutePath() + "/" + self.shapeFiles[k], k)
+            # Increment progress bar
+            self.dlg.pgbImport.setValue(self.dlg.pgbImport.value() + 1)
+            
+        self.removeShapeFiles(self.shapeFiles)
+    
+    def importData(self, filename, code):
+        """Import data from shapefile to an specified layer in project.
+        :param filename: shapefile filename.
+        :type text: str
+        :param code: shapefile name.
+        :type text: str
+        """
+        
+        driver = ogr.GetDriverByName('ESRI Shapefile')
+        layers = QgsMapLayerRegistry.instance().mapLayers()
+        destinationlayer = None
+        colunmMappingDict = {}
+        staticMappingDict = {}
+        regexMappingDict = {}
+        
+        destinationLayerName = self.pointsLayersConfig[code].elementsByTagName('destinationlayer').item(0).toElement().text()
+        columnMappings = self.pointsLayersConfig[code].elementsByTagName('columnmapping')
+        staticMappings = self.pointsLayersConfig[code].elementsByTagName('staticmapping')
+        
+        # No destination layer found in XML
+        if destinationLayerName is None:
+            return
+        
+        for k in layers.keys():
+            if layers[k].name() == destinationLayerName:
+                destinationlayer = layers[k]
+        
+        # No destination layer found in QGis Project
+        if destinationlayer is None:
+            return
+        
+        dataSource = driver.Open(filename, 0)
+        
+        if dataSource is None:
+            self.dlg.txtOut.appendPlainText('Could not open %s \n' % (filename))
+        else:
+            self.dlg.txtOut.appendPlainText('Opened %s' % (filename))
+            layer = dataSource.GetLayer()
+            featureCount = layer.GetFeatureCount()
+        
+        # Get import rules with column mappings
+        
+        for index in range(columnMappings.count()):
+                sourcecolumnname = columnMappings.at(index).toElement().elementsByTagName('source').item(0).toElement().text()
+                destinationcolumnname = columnMappings.at(index).toElement().elementsByTagName('destination').item(0).toElement().text()
+                regex = columnMappings.at(index).toElement().elementsByTagName('regex')
+                if not (regex is None):
+                    regexMappingDict[sourcecolumnname] = regex.item(0).toElement().text()
+                colunmMappingDict[sourcecolumnname] = destinationcolumnname
+        
+        # Get import rules with static value mappings        
+              
+        for index in range(staticMappings.count()):
+                staticValue = staticMappings.at(index).toElement().elementsByTagName('value').item(0).toElement().text()
+                destinationcolumnname = staticMappings.at(index).toElement().elementsByTagName('destination').item(0).toElement().text()
+                staticMappingDict[destinationcolumnname] = staticValue
+        
+        # Enable edit mode on destination layer
+        destinationlayer.startEditing()
+        
+        # Retrieve all column off destination layer
+        fields = destinationlayer.pendingFields()
+        
+        # For each data in shapefile
+        for feature in layer:
+        
+            #Create new feature in destination layer and get geometry from shapefile
+            newFeature = QgsFeature(fields)
+            newFeature.setGeometry(QgsGeometry.fromWkt(str(feature.GetGeometryRef())))
+                        
+            # For each column mapping
+            for k in colunmMappingDict.keys():
+                # print "source %s -> destination %s" % (k,colunmMappingDict[k])
+                
+                # With regex
+                if regexMappingDict[k]:
+                    regexp = re.compile(regexMappingDict[k])
+                    # print str(k)
+                    # print feature.GetField(str(k))
+                    
+                    m = regexp.match(feature.GetField(str(k)))
+                    if not (m is None):
+                        # print 'Regex : %s   --> Value : %s' % (regexMappingDict[k], m.group('group'))
+                        newFeature.setAttribute(fields.fieldNameIndex(colunmMappingDict[k]), m.group('group'))
+                
+                # Without regex
+                else:
+                    newFeature.setAttribute(fields.fieldNameIndex(colunmMappingDict[k]), feature.GetField(str(k)))
+            
+            # For each static value mapping
+            for k in staticMappingDict.keys():
+                #print "destination %s -> value %s" % (k,staticMappingDict[k])
+                newFeature.setAttribute(fields.fieldNameIndex(k), staticMappingDict[k])
+            
+            # Add new feature in destination layer
+            destinationlayer.addFeature(newFeature, True)
+            
+        self.dlg.txtOut.appendPlainText('Shape %s : %s features imported \n' % (code, featureCount))
+
+    
+    def unload(self):
+        """Removes the plugin menu item and icon from QGIS GUI."""
+        for action in self.actions:
+            self.iface.removePluginMenu(
+                self.tr(u'&EasyImport'),
+                action)
+            self.iface.removeToolBarIcon(action)
+
+    def run(self):
+        """Run method that performs all the real work"""
+        # show the dialog
+        self.dlg.show()
+        # Run the dialog event loop
+        result = self.dlg.exec_()
+        
+        # Reset progress bar value
+        self.dlg.pgbImport.setValue(0)
+        
+        # Reset output text box
+        self.dlg.txtOut.clear()
+        
+        
+        # See if OK was pressed
+        if result:
+            # Do something useful here - delete the line containing pass and
+            # substitute with your code.
+            pass

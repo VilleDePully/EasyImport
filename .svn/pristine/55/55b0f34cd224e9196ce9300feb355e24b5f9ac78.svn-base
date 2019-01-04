@@ -1,0 +1,516 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configs>
+    <!-- Une configuration d'import -->
+    <config id="1" name="Import EP">
+        <pointlayers>
+            <!-- l'attribut code correspond au nom du fichier de données source sans extension (p.e 300.shp) -->
+            <pointlayer code="300">
+                <!-- Nom de la couche de destination dans le projet QGis (case sensitiv...) -->
+                <destinationlayer>points de construction</destinationlayer>
+                <colummappings>
+                    <columnmapping>
+                        <!-- Nom de la colonne du fichier de données source -->
+                        <source>Point_ID</source>
+                        <!-- Nom de la colonne de la couche QGis de destination -->
+                        <destination>id</destination>
+                        <!-- Regex permettant de ne garder que la partie numérique de la donnée source -->
+                        <!-- Pour faire un autre regex voir www.debuggex.com et https://docs.python.org/2/howto/regex.html#non-capturing-and-named-groups -->
+                        <!-- le groupe à capturer doit s'appeler "group" -->
+                        <regex>^(?P&lt;group&gt;\d*)</regex>
+                    </columnmapping>
+                    <columnmapping>
+                        <!-- Nom de la colonne du fichier de données source -->
+                        <source>Ortho_Heig</source>
+                        <!-- Nom de la colonne de la couche QGis de destination -->
+                        <destination>altitude</destination>
+                    </columnmapping>
+                </colummappings>
+            </pointlayer>
+            <pointlayer code="1"> <!-- Borne hydrante -->
+                <destinationlayer>hydrantes</destinationlayer>
+                <colummappings>
+                    <columnmapping>
+                        <source>Point_ID</source>
+                        <destination>identification</destination>
+                        <regex>^(?P&lt;group&gt;\d*)</regex>
+                    </columnmapping>
+                    <columnmapping>
+                        <source>Ortho_Heig</source>
+                        <destination>altitude</destination>
+                    </columnmapping>
+                </colummappings>
+            </pointlayer>
+            <pointlayer code="43"> <!-- Vanne -->
+                <destinationlayer>vannes</destinationlayer>
+                <colummappings>
+                    <columnmapping>
+                        <source>Point_ID</source>
+                        <destination>identification</destination>
+                        <regex>^(?P&lt;group&gt;\d*)</regex>
+                    </columnmapping>
+                    <columnmapping>
+                        <source>Ortho_Heig</source>
+                        <destination>altitude</destination>
+                    </columnmapping>
+                </colummappings>
+            </pointlayer>
+            <pointlayer code="326"> <!-- Robinet -->
+                <destinationlayer>Pièces d'installations</destinationlayer>
+                <colummappings>
+                    <columnmapping>
+                        <source>Point_ID</source>
+                        <destination>identification</destination>
+                        <regex>^(?P&lt;group&gt;\d*)</regex>
+                    </columnmapping>
+                </colummappings>
+                <staticmappings>
+                    <staticmapping>
+                        <value>326</value>
+                        <destination>fk_part_type</destination>
+                    </staticmapping>
+                </staticmappings>
+            </pointlayer>
+            <pointlayer code="327"> <!-- Robinet à vidange automatique -->
+                <destinationlayer>Pièces d'installations</destinationlayer>
+                <colummappings>
+                    <columnmapping>
+                        <source>Point_ID</source>
+                        <destination>identification</destination>
+                        <regex>^(?P&lt;group&gt;\d*)</regex>
+                    </columnmapping>
+                </colummappings>
+                <staticmappings>
+                    <staticmapping>
+                        <!-- Valeur statique à placer dans la colonne de destination -->
+                        <value>327</value>
+                        <destination>fk_part_type</destination>
+                    </staticmapping>
+                </staticmappings>
+            </pointlayer>
+            <pointlayer code="328"> <!-- Té -->
+                <destinationlayer>points de construction</destinationlayer>
+                <colummappings>
+                    <columnmapping>
+                        <source>Point_ID</source>
+                        <destination>id</destination>
+                        <regex>^(?P&lt;group&gt;\d*)</regex>
+                    </columnmapping>
+                </colummappings>
+                <staticmappings>
+                    <staticmapping>
+                        <source>Ortho_Heig</source>
+                        <destination>altitude</destination>
+                    </staticmapping>
+                </staticmappings>
+            </pointlayer>
+            <pointlayer code="329"> <!-- Croix -->
+                <destinationlayer>Pièces d'installations</destinationlayer>
+                <colummappings>
+                    <columnmapping>
+                        <source>Point_ID</source>
+                        <destination>identification</destination>
+                        <regex>^(?P&lt;group&gt;\d*)</regex>
+                    </columnmapping>
+                </colummappings>
+                <staticmappings>
+                    <staticmapping>
+                        <value>329</value>
+                        <destination>fk_part_type</destination>
+                    </staticmapping>
+                </staticmappings>
+            </pointlayer>
+            <pointlayer code="330"> <!-- Réduction -->
+                <destinationlayer>points de construction</destinationlayer>
+                <colummappings>
+                    <columnmapping>
+                        <source>Point_ID</source>
+                        <destination>id</destination>
+                        <regex>^(?P&lt;group&gt;\d*)</regex>
+                    </columnmapping>
+                    <columnmapping>
+                        <source>Ortho_Heig</source>
+                        <destination>altitude</destination>
+                    </columnmapping>
+                </colummappings>
+            </pointlayer>
+            <pointlayer code="331"> <!-- Changement année construction -->
+                <destinationlayer>points de construction</destinationlayer>
+                <colummappings>
+                    <columnmapping>
+                        <source>Point_ID</source>
+                        <destination>id</destination>
+                        <regex>^(?P&lt;group&gt;\d*)</regex>
+                    </columnmapping>
+                    <columnmapping>
+                        <source>Ortho_Heig</source>
+                        <destination>altitude</destination>
+                    </columnmapping>
+                </colummappings>
+            </pointlayer>
+            <pointlayer code="332"> <!-- Changement de pente -->
+                <destinationlayer>points de construction</destinationlayer>
+                <colummappings>
+                    <columnmapping>
+                        <source>Point_ID</source>
+                        <destination>id</destination>
+                        <regex>^(?P&lt;group&gt;\d*)</regex>
+                    </columnmapping>
+                    <columnmapping>
+                        <source>Ortho_Heig</source>
+                        <destination>altitude</destination>
+                    </columnmapping>
+                </colummappings>
+            </pointlayer>
+            <pointlayer code="333"> <!-- Pièce isolante -->
+                <destinationlayer>Pièces d'installations</destinationlayer>
+                <colummappings>
+                    <columnmapping>
+                        <source>Point_ID</source>
+                        <destination>identification</destination>
+                        <regex>^(?P&lt;group&gt;\d*)</regex>
+                    </columnmapping>
+                </colummappings>
+                <staticmappings>
+                    <staticmapping>
+                        <value>333</value>
+                        <destination>fk_part_type</destination>
+                    </staticmapping>
+                </staticmappings>
+            </pointlayer>
+            <pointlayer code="334"> <!-- Coude -->
+                <destinationlayer>Pièces d'installations</destinationlayer>
+                <colummappings>
+                    <columnmapping>
+                        <source>Point_ID</source>
+                        <destination>identification</destination>
+                        <regex>^(?P&lt;group&gt;\d*)</regex>
+                    </columnmapping>
+                </colummappings>
+                <staticmappings>
+                    <staticmapping>
+                        <value>334</value>
+                        <destination>fk_part_type</destination>
+                    </staticmapping>
+                </staticmappings>
+            </pointlayer>
+            <pointlayer code="335"> <!-- Obturateur tampon de fermeture -->
+                <destinationlayer>Pièces d'installations</destinationlayer>
+                <colummappings>
+                    <columnmapping>
+                        <source>Point_ID</source>
+                        <destination>identification</destination>
+                        <regex>^(?P&lt;group&gt;\d*)</regex>
+                    </columnmapping>
+                </colummappings>
+                <staticmappings>
+                    <staticmapping>
+                        <value>335</value>
+                        <destination>fk_part_type</destination>
+                    </staticmapping>
+                </staticmappings>
+            </pointlayer>
+            <pointlayer code="336"> <!-- Manchon de réparation -->
+                <destinationlayer>Pièces d'installations</destinationlayer>
+                <colummappings>
+                    <columnmapping>
+                        <source>Point_ID</source>
+                        <destination>identification</destination>
+                        <regex>^(?P&lt;group&gt;\d*)</regex>
+                    </columnmapping>
+                </colummappings>
+                <staticmappings>
+                    <staticmapping>
+                        <value>336</value>
+                        <destination>fk_part_type</destination>
+                    </staticmapping>
+                </staticmappings>
+            </pointlayer>
+            <pointlayer code="337"> <!-- Manchon bridé -->
+                <destinationlayer>Pièces d'installations</destinationlayer>
+                <colummappings>
+                    <columnmapping>
+                        <source>Point_ID</source>
+                        <destination>identification</destination>
+                        <regex>^(?P&lt;group&gt;\d*)</regex>
+                    </columnmapping>
+                </colummappings>
+                <staticmappings>
+                    <staticmapping>
+                        <value>337</value>
+                        <destination>fk_part_type</destination>
+                    </staticmapping>
+                </staticmappings>
+            </pointlayer>
+            <pointlayer code="338"> <!-- Manchon emboîté -->
+                <destinationlayer>Pièces d'installations</destinationlayer>
+                <colummappings>
+                    <columnmapping>
+                        <source>Point_ID</source>
+                        <destination>identification</destination>
+                        <regex>^(?P&lt;group&gt;\d*)</regex>
+                    </columnmapping>
+                </colummappings>
+                <staticmappings>
+                    <staticmapping>
+                        <value>338</value>
+                        <destination>fk_part_type</destination>
+                    </staticmapping>
+                </staticmappings>
+            </pointlayer>
+            <pointlayer code="339"> <!-- Obturation filetée -->
+                <destinationlayer>Pièces d'installations</destinationlayer>
+                <colummappings>
+                    <columnmapping>
+                        <source>Point_ID</source>
+                        <destination>identification</destination>
+                        <regex>^(?P&lt;group&gt;\d*)</regex>
+                    </columnmapping>
+                </colummappings>
+                <staticmappings>
+                    <staticmapping>
+                        <value>339</value>
+                        <destination>fk_part_type</destination>
+                    </staticmapping>
+                </staticmappings>
+            </pointlayer>
+            <pointlayer code="340"> <!-- Bride de mise à terre -->
+                <destinationlayer>Pièces d'installations</destinationlayer>
+                <colummappings>
+                    <columnmapping>
+                        <source>Point_ID</source>
+                        <destination>identification</destination>
+                        <regex>^(?P&lt;group&gt;\d*)</regex>
+                    </columnmapping>
+                </colummappings>
+                <staticmappings>
+                    <staticmapping>
+                        <value>340</value>
+                        <destination>fk_part_type</destination>
+                    </staticmapping>
+                </staticmappings>
+            </pointlayer>
+            <pointlayer code="341"> <!-- Changement de matériau -->
+                <destinationlayer>points de construction</destinationlayer>
+                <colummappings>
+                    <columnmapping>
+                        <source>Point_ID</source>
+                        <destination>id</destination>
+                        <regex>^(?P&lt;group&gt;\d*)</regex>
+                    </columnmapping>
+                    <columnmapping>
+                        <source>Ortho_Heig</source>
+                        <destination>altitude</destination>
+                    </columnmapping>
+                </colummappings>
+            </pointlayer>
+            <pointlayer code="342"> <!-- Collier de prise -->
+                <destinationlayer>Pièces d'installations</destinationlayer>
+                <colummappings>
+                    <columnmapping>
+                        <source>Point_ID</source>
+                        <destination>identification</destination>
+                        <regex>^(?P&lt;group&gt;\d*)</regex>
+                    </columnmapping>
+                </colummappings>
+                <staticmappings>
+                    <staticmapping>
+                        <value>342</value>
+                        <destination>fk_part_type</destination>
+                    </staticmapping>
+                </staticmappings>
+            </pointlayer>
+            <pointlayer code="343"> <!-- Pièce de raccordement standard -->
+                <destinationlayer>Pièces d'installations</destinationlayer>
+                <colummappings>
+                    <columnmapping>
+                        <source>Point_ID</source>
+                        <destination>identification</destination>
+                        <regex>^(?P&lt;group&gt;\d*)</regex>
+                    </columnmapping>
+                </colummappings>
+                <staticmappings>
+                    <staticmapping>
+                        <value>344</value>
+                        <destination>fk_part_type</destination>
+                    </staticmapping>
+                </staticmappings>
+            </pointlayer>
+            <pointlayer code="344"> <!-- Elément obturation standard sur conduite -->
+                <destinationlayer>Pièces d'installations</destinationlayer>
+                <colummappings>
+                    <columnmapping>
+                        <source>Point_ID</source>
+                        <destination>identification</destination>
+                        <regex>^(?P&lt;group&gt;\d*)</regex>
+                    </columnmapping>
+                </colummappings>
+                <staticmappings>
+                    <staticmapping>
+                        <value>344</value>
+                        <destination>fk_part_type</destination>
+                    </staticmapping>
+                </staticmappings>
+            </pointlayer>
+            <pointlayer code="345"> <!-- Armature isolante dans bâtiment -->
+                <destinationlayer>Pièces d'installations</destinationlayer>
+                <colummappings>
+                    <columnmapping>
+                        <source>Point_ID</source>
+                        <destination>identification</destination>
+                        <regex>^(?P&lt;group&gt;\d*)</regex>
+                    </columnmapping>
+                </colummappings>
+                <staticmappings>
+                    <staticmapping>
+                        <value>345</value>
+                        <destination>fk_part_type</destination>
+                    </staticmapping>
+                </staticmappings>
+            </pointlayer>
+            <pointlayer code="346"> <!-- Clapet anti retour -->
+                <destinationlayer>Pièces d'installations</destinationlayer>
+                <colummappings>
+                    <columnmapping>
+                        <source>Point_ID</source>
+                        <destination>identification</destination>
+                        <regex>^(?P&lt;group&gt;\d*)</regex>
+                    </columnmapping>
+                </colummappings>
+                <staticmappings>
+                    <staticmapping>
+                        <value>346</value>
+                        <destination>fk_part_type</destination>
+                    </staticmapping>
+                </staticmappings>
+            </pointlayer>
+            <pointlayer code="347"> <!-- Manchon à coupler -->
+                <destinationlayer>Pièces d'installations</destinationlayer>
+                <colummappings>
+                    <columnmapping>
+                        <source>Point_ID</source>
+                        <destination>identification</destination>
+                        <regex>^(?P&lt;group&gt;\d*)</regex>
+                    </columnmapping>
+                </colummappings>
+                <staticmappings>
+                    <staticmapping>
+                        <value>347</value>
+                        <destination>fk_part_type</destination>
+                    </staticmapping>
+                </staticmappings>
+            </pointlayer>
+            <pointlayer code="348"> <!-- Manchon avec grippes -->
+                <destinationlayer>Pièces d'installations</destinationlayer>
+                <colummappings>
+                    <columnmapping>
+                        <source>Point_ID</source>
+                        <destination>identification</destination>
+                        <regex>^(?P&lt;group&gt;\d*)</regex>
+                    </columnmapping>
+                </colummappings>
+                <staticmappings>
+                    <staticmapping>
+                        <value>348</value>
+                        <destination>fk_part_type</destination>
+                    </staticmapping>
+                </staticmappings>
+            </pointlayer>
+            <pointlayer code="349"> <!-- dérivation -->
+                <destinationlayer>Pièces d'installations</destinationlayer>
+                <colummappings>
+                    <columnmapping>
+                        <source>Point_ID</source>
+                        <destination>identification</destination>
+                        <regex>^(?P&lt;group&gt;\d*)</regex>
+                    </columnmapping>
+                </colummappings>
+                <staticmappings>
+                    <staticmapping>
+                        <value>349</value>
+                        <destination>fk_part_type</destination>
+                    </staticmapping>
+                </staticmappings>
+            </pointlayer>
+            <pointlayer code="350"> <!-- divers réducteur de pression-->
+                <destinationlayer>Pièces d'installations</destinationlayer>
+                <colummappings>
+                    <columnmapping>
+                        <source>Point_ID</source>
+                        <destination>identification</destination>
+                        <regex>^(?P&lt;group&gt;\d*)</regex>
+                    </columnmapping>
+                </colummappings>
+                <staticmappings>
+                    <staticmapping>
+                        <value>350</value>
+                        <destination>fk_part_type</destination>
+                    </staticmapping>
+                </staticmappings>
+            </pointlayer>
+            <pointlayer code="351"> <!-- chambre normalisée -->
+                <destinationlayer>Pièces d'installations</destinationlayer>
+                <colummappings>
+                    <columnmapping>
+                        <source>Point_ID</source>
+                        <destination>identification</destination>
+                        <regex>^(?P&lt;group&gt;\d*)</regex>
+                    </columnmapping>
+                </colummappings>
+                <staticmappings>
+                    <staticmapping>
+                        <value>351</value>
+                        <destination>fk_part_type</destination>
+                    </staticmapping>
+                </staticmappings>
+            </pointlayer>
+            <pointlayer code="352"> <!-- vidange (bonde) -->
+                <destinationlayer>Pièces d'installations</destinationlayer>
+                <colummappings>
+                    <columnmapping>
+                        <source>Point_ID</source>
+                        <destination>identification</destination>
+                        <regex>^(?P&lt;group&gt;\d*)</regex>
+                    </columnmapping>
+                </colummappings>
+                <staticmappings>
+                    <staticmapping>
+                        <value>352</value>
+                        <destination>fk_part_type</destination>
+                    </staticmapping>
+                </staticmappings>
+            </pointlayer>
+            <pointlayer code="353"> <!-- ventouse sur tube -->
+                <destinationlayer>Pièces d'installations</destinationlayer>
+                <colummappings>
+                    <columnmapping>
+                        <source>Point_ID</source>
+                        <destination>identification</destination>
+                        <regex>^(?P&lt;group&gt;\d*)</regex>
+                    </columnmapping>
+                </colummappings>
+                <staticmappings>
+                    <staticmapping>
+                        <value>353</value>
+                        <destination>fk_part_type</destination>
+                    </staticmapping>
+                </staticmappings>
+            </pointlayer>
+            <pointlayer code="354"> <!-- élément d'obturation -->
+                <destinationlayer>Pièces d'installations</destinationlayer>
+                <colummappings>
+                    <columnmapping>
+                        <source>Point_ID</source>
+                        <destination>identification</destination>
+                        <regex>^(?P&lt;group&gt;\d*)</regex>
+                    </columnmapping>
+                </colummappings>
+                <staticmappings>
+                    <staticmapping>
+                        <value>354</value>
+                        <destination>fk_part_type</destination>
+                    </staticmapping>
+                </staticmappings>
+            </pointlayer>
+        </pointlayers>
+    </config>
+</configs>

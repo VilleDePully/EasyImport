@@ -1,24 +1,39 @@
-# Mandatory items:
+# This file contains metadata for your plugin. Since 
+# version 2.0 of QGIS this is the proper way to supply 
+# information about a plugin. The old method of 
+# embedding metadata in __init__.py will 
+# is no longer supported since version 2.0.
+
+# This file should be included when you package your plugin.# Mandatory items:
+
 [general]
-name=EasyImport
-qgisMinimumVersion=2.0
-qgisMaximumVersion=2.99
-description=EasyImport : Plugin for GPS Import
-version=1.1.0
+name=EasyImport 3
+qgisMinimumVersion=3.0
+description=This plugins enables easy GPS codification to any layer destination
+version=3.0
+author=Xavier Ménétrey et Arnaud Poncet-Montanges / Ville de Pully
+email=informatique@pully.ch
 
-# Optional items:
-# changelog=
-homepage=https://github.com/VilleDePully/EasyImport
+about=This plugins enables quick and easy GPS codification and import from text files to any QGIS vector layers.
+
 tracker=https://github.com/VilleDePully/EasyImport/issues
-repository=https://github.com/VilleDePully/QGIS_Plugins
+repository=https://github.com/VilleDePully/EasyImport
+# End of mandatory metadata
 
-# tags are comma separated with spaces allowed
-tags=gps,import,network,water,wastewater,electricity
+# Recommended items:
+
+# Uncomment the following line and add your changelog:
+# changelog=
+
+# Tags are comma separated with spaces allowed
+tags=GPS, Import, Codification
+
+homepage=https://github.com/VilleDePully/EasyImport
+category=Plugins
 icon=icon.png
-
+# experimental flag
 experimental=False
+
+# deprecated flag (applies to the whole plugin, not just a single version)
 deprecated=False
 
-# Author contact information
-author=Xavier Ménétrey, Arnaud Poncet-Montanges - Ville de Pully
-email=informatique@pully.ch
