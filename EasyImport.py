@@ -497,10 +497,14 @@ class EasyImport:
         for feature in layer:
 
             # Create new feature in destination layer and get geometry from shapefile
-            newFeature: object = QgsFeature(fields)
-            initFields = destinationlayer.dataProvider().fields()
-            newFeature.setFields(initFields)
-            newFeature.initAttributes(initFields.size())
+            newFeature = QgsVectorLayerUtils.createFeature(destinationlayer)
+
+            # Old stuff
+            # initFields = destinationlayer.dataProvider().fields()
+            # newFeature.setFields(initFields)
+            # newFeature.initAttributes(initFields.size())
+
+            # Set geometry
             newFeature.setGeometry(QgsGeometry.fromWkt(str(feature.GetGeometryRef())))
 
             # For each column mapping
@@ -527,17 +531,8 @@ class EasyImport:
                 # print "destination %s -> value %s" % (k,staticMappingDict[k])
                 newFeature.setAttribute(fields.lookupField(k), staticMappingDict[k])
 
-            # Get default value for oid
-            # See https://github.com/qgis/QGIS/pull/5378
-            # When migrating to QGIS 3, remove following line
-            # and use QgsVectorLayerUtils.createFeature instead of layer.addFeature
-            #if destinationlayer.fields().indexFromName('obj_id') >= 0:
-            #    newFeature['obj_id'] = destinationlayer.dataProvider().defaultValue(
-            #        destinationlayer.fields().indexFromName('obj_id'))
-
             # Add new feature in destination layer
-            #destinationlayer.addFeature(newFeature, True) Removed
-            QgsVectorLayerUtils.createFeature(destinationlayer)
+            destinationlayer.addFeature(newFeature)
 
         self.dlg.txtOut.appendPlainText('Shape %s : %s features imported \n' % (code, featureCount))
 
