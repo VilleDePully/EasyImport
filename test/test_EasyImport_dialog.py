@@ -9,14 +9,14 @@
 """
 
 __author__ = 'informatique@pully.ch'
-__date__ = '2015-01-16'
-__copyright__ = 'Copyright 2015, Ville de Pully'
+__date__ = '2018-11-22'
+__copyright__ = 'Copyright 2018, Xavier Ménétrey et Arnaud Poncet-Montanges / Ville de Pully'
 
 import unittest
 
-from PyQt4.QtGui import QDialogButtonBox, QDialog
+from PyQt5.QtGui import QDialogButtonBox, QDialog
 
-from EasyImport_dialog import EasyImportDialog
+from easyimport_dialog import EasyImportDialog
 
 from utilities import get_qgis_app
 QGIS_APP = get_qgis_app()
