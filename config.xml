@@ -67,7 +67,7 @@
                 </colummappings>
             </pointlayer>
             <pointlayer code="1"> <!-- Borne hydrante -->
-                <destinationlayer>Hydrantes</destinationlayer>
+                <destinationlayer>hydrantes</destinationlayer>
                 <colummappings>
                     <columnmapping>
                         <source>Point_ID</source>
@@ -84,7 +84,7 @@
                 </colummappings>
             </pointlayer>
             <pointlayer code="43"> <!-- Vanne -->
-                <destinationlayer>Vannes</destinationlayer>
+                <destinationlayer>vannes</destinationlayer>
                 <colummappings>
                     <columnmapping>
                         <source>Point_ID</source>
@@ -1314,94 +1314,22 @@
     <!-- Configuration QELE -->
     <config id="3" name="Import ELE">
         <pointlayers>
-            <pointlayer code="501">
-                <destinationlayer>Consommateur Public</destinationlayer>
+            <!-- l'attribut code correspond au nom du fichier de données source sans extension (p.e 300.shp) -->
+            <pointlayer code="410">
+                <!-- Nom de la couche de destination dans le projet QGis (case sensitiv...) -->
+                <destinationlayer>Ouvrages</destinationlayer>
                 <colummappings>
                     <columnmapping>
+                        <!-- Nom de la colonne du fichier de données source -->
                         <source>Point_ID</source>
+                        <!-- Nom de la colonne de la couche QGis de destination -->
                         <destination>identifier</destination>
                     </columnmapping>
                     <columnmapping>
+                        <!-- Nom de la colonne du fichier de données source -->
                         <source>Altitude</source>
-                        <destination>level</destination>
-                    </columnmapping>
-                </colummappings>
-            </pointlayer>
-            <pointlayer code="502">
-                <destinationlayer>Armoire</destinationlayer>
-                <colummappings>
-                    <columnmapping>
-                        <source>Point_ID</source>
-                        <destination>identifier</destination>
-                    </columnmapping>
-                    <columnmapping>
-                        <source>Altitude</source>
-                        <destination>level</destination>
-                    </columnmapping>
-                </colummappings>
-            </pointlayer>
-            <pointlayer code="503">
-                <destinationlayer>Station</destinationlayer>
-                <colummappings>
-                    <columnmapping>
-                        <source>Point_ID</source>
-                        <destination>identifier</destination>
-                    </columnmapping>
-                    <columnmapping>
-                        <source>Altitude</source>
-                        <destination>level</destination>
-                    </columnmapping>
-                </colummappings>
-            </pointlayer>
-            <pointlayer code="504">
-                <destinationlayer>Consommateur</destinationlayer>
-                <colummappings>
-                    <columnmapping>
-                        <source>Point_ID</source>
-                        <destination>identifier</destination>
-                    </columnmapping>
-                    <columnmapping>
-                        <source>Altitude</source>
-                        <destination>level</destination>
-                    </columnmapping>
-                </colummappings>
-            </pointlayer>
-            <pointlayer code="505">
-                <destinationlayer>Manchon</destinationlayer>
-                <colummappings>
-                    <columnmapping>
-                        <source>Point_ID</source>
-                        <destination>identifier</destination>
-                    </columnmapping>
-                    <columnmapping>
-                        <source>Altitude</source>
-                        <destination>level</destination>
-                    </columnmapping>
-                </colummappings>
-            </pointlayer>
-            <pointlayer code="506">
-                <destinationlayer>Mise à terre</destinationlayer>
-                <colummappings>
-                    <columnmapping>
-                        <source>Point_ID</source>
-                        <destination>identifier</destination>
-                    </columnmapping>
-                    <columnmapping>
-                        <source>Altitude</source>
-                        <destination>level</destination>
-                    </columnmapping>
-                </colummappings>
-            </pointlayer>
-            <pointlayer code="507">
-                <destinationlayer>Petite connexion</destinationlayer>
-                <colummappings>
-                    <columnmapping>
-                        <source>Point_ID</source>
-                        <destination>identifier</destination>
-                    </columnmapping>
-                    <columnmapping>
-                        <source>Altitude</source>
-                        <destination>level</destination>
+                        <!-- Nom de la colonne de la couche QGis de destination -->
+                        <destination>bottom_level</destination>
                     </columnmapping>
                 </colummappings>
             </pointlayer>
