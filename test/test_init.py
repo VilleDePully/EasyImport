@@ -11,7 +11,7 @@ __copyright__ += 'Disaster Reduction'
 import os
 import unittest
 import logging
-import configparser
+import ConfigParser
 
 LOGGER = logging.getLogger('QGIS')
 
@@ -47,7 +47,7 @@ class TestInit(unittest.TestCase):
             'metadata.txt'))
         LOGGER.info(file_path)
         metadata = []
-        parser = configparser.ConfigParser()
+        parser = ConfigParser.ConfigParser()
         parser.optionxform = str
         parser.read(file_path)
         message = 'Cannot find a section named "general" in %s' % file_path

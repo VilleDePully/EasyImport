@@ -9,12 +9,12 @@
 """
 
 __author__ = 'informatique@pully.ch'
-__date__ = '2018-11-22'
-__copyright__ = 'Copyright 2018, Xavier Ménétrey et Arnaud Poncet-Montanges / Ville de Pully'
+__date__ = '2015-01-16'
+__copyright__ = 'Copyright 2015, Ville de Pully'
 
 import unittest
 
-from PyQt5.QtGui import QIcon
+from PyQt4.QtGui import QIcon
 
 
 
