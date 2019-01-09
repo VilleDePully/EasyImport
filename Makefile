@@ -1,11 +1,11 @@
 #/***************************************************************************
 # EasyImport
 #
-# EasyImport
+# This plugins enables easy GPS codification to any layer destination
 #							 -------------------
-#		begin				: 2015-01-16
+#		begin				: 2018-11-22
 #		git sha				: $Format:%H$
-#		copyright			: (C) 2015 by Ville de Pully
+#		copyright			: (C) 2018 by Xavier Ménétrey et Arnaud Poncet-Montanges / Ville de Pully
 #		email				: informatique@pully.ch
 # ***************************************************************************/
 #
@@ -38,23 +38,23 @@ LOCALES =
 # translation
 SOURCES = \
 	__init__.py \
-	EasyImport.py \
-	EasyImport_dialog.py
+	easyimport.py easyimport_dialog.py
 
-PLUGINNAME = EasyImport
+PLUGINNAME = easyimport
 
 PY_FILES = \
-	EasyImport.py \
-	EasyImport_dialog.py \
-	__init__.py
+	__init__.py \
+	easyimport.py easyimport_dialog.py
 
-UI_FILES = EasyImport_dialog_base.ui
+UI_FILES = easyimport_dialog_base.ui
 
-EXTRAS = icon.png metadata.txt
+EXTRAS = metadata.txt icon.png
 
-COMPILED_RESOURCE_FILES = resources_rc.py
+EXTRA_DIRS =
 
-PEP8EXCLUDE=pydev,resources_rc.py,conf.py,third_party,ui
+COMPILED_RESOURCE_FILES = resources.py
+
+PEP8EXCLUDE=pydev,resources.py,conf.py,third_party,ui
 
 
 #################################################
@@ -73,8 +73,8 @@ default: compile
 
 compile: $(COMPILED_RESOURCE_FILES)
 
-%_rc.py : %.qrc $(RESOURCES_SRC)
-	pyrcc4 -o $*_rc.py  $<
+%.py : %.qrc $(RESOURCES_SRC)
+	pyrcc5 -o $*.py  $<
 
 %.qm : %.ts
 	$(LRELEASE) $<
@@ -112,6 +112,9 @@ deploy: compile doc transcompile
 	cp -vf $(EXTRAS) $(HOME)/$(QGISDIR)/python/plugins/$(PLUGINNAME)
 	cp -vfr i18n $(HOME)/$(QGISDIR)/python/plugins/$(PLUGINNAME)
 	cp -vfr $(HELP) $(HOME)/$(QGISDIR)/python/plugins/$(PLUGINNAME)/help
+	# Copy extra directories if any
+	(foreach EXTRA_DIR,(EXTRA_DIRS), cp -R (EXTRA_DIR) (HOME)/(QGISDIR)/python/plugins/(PLUGINNAME)/;)
+
 
 # The dclean target removes compiled python files from plugin directory
 # also deletes any .git entry
