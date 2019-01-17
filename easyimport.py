@@ -42,6 +42,7 @@ from osgeo import osr
 from qgis.core import QgsProject, QgsFeature, QgsGeometry, QgsVectorLayerUtils
 from glob import glob
 
+
 class EasyImport:
     """QGIS Plugin Implementation."""
 
