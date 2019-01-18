@@ -9,3 +9,6 @@ Codification is defined in https://github.com/VilleDePully/EasyImport/blob/maste
 Really simple and fast to use.
 
 Supports different modes like full or network specific imports.
+
+EasyImport/Docs/easyimport.png
+      
