@@ -10,5 +10,5 @@ Really simple and fast to use.
 
 Supports different modes like full or network specific imports.
 
-EasyImport/Docs/easyimport.png
+[Image EasyImport](https://github.com/VilleDePully/EasyImport/raw/master/Docs/easyimport.png "EasyImport")
       
