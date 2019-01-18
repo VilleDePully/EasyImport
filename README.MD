@@ -1,4 +1,4 @@
-***EasyImport***
+**EasyImport**
 
 Simple geocodifier plugin for GPS Import
 
