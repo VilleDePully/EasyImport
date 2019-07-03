@@ -77,10 +77,6 @@
                         <source>Altitude</source>
                         <destination>altitude</destination>
                     </columnmapping>
-                    <columnmapping>
-                        <source>Remarque</source>
-                        <destination>remark</destination>
-                    </columnmapping>
                 </colummappings>
             </pointlayer>
             <pointlayer code="43"> <!-- Vanne -->
@@ -94,10 +90,6 @@
                         <source>Altitude</source>
                         <destination>altitude</destination>
                     </columnmapping>
-                    <columnmapping>
-                        <source>Remarque</source>
-                        <destination>remark</destination>
-                    </columnmapping>
                 </colummappings>
             </pointlayer>
             <pointlayer code="326"> <!-- Robinet -->
@@ -110,10 +102,6 @@
                     <columnmapping>
                         <source>Altitude</source>
                         <destination>altitude</destination>
-                    </columnmapping>
-                    <columnmapping>
-                        <source>Remarque</source>
-                        <destination>remark</destination>
                     </columnmapping>
                 </colummappings>
                 <staticmappings>
@@ -133,10 +121,6 @@
                     <columnmapping>
                         <source>Altitude</source>
                         <destination>altitude</destination>
-                    </columnmapping>
-                    <columnmapping>
-                        <source>Remarque</source>
-                        <destination>remark</destination>
                     </columnmapping>
                 </colummappings>
                 <staticmappings>
@@ -206,10 +190,6 @@
                         <source>Code</source>
                         <destination>code</destination>
                     </columnmapping>
-                    <columnmapping>
-                        <source>Remarque</source>
-                        <destination>remark</destination>
-                    </columnmapping>
                 </colummappings>
             </pointlayer>
             <pointlayer code="331"> <!-- Changement année construction -->
@@ -244,10 +224,6 @@
                         <source>Altitude</source>
                         <destination>altitude</destination>
                     </columnmapping>
-                    <columnmapping>
-                        <source>Remarque</source>
-                        <destination>remark</destination>
-                    </columnmapping>
                 </colummappings>
                 <staticmappings>
                     <staticmapping>
@@ -266,10 +242,6 @@
                     <columnmapping>
                         <source>Altitude</source>
                         <destination>altitude</destination>
-                    </columnmapping>
-                    <columnmapping>
-                        <source>Remarque</source>
-                        <destination>remark</destination>
                     </columnmapping>
                 </colummappings>
                 <staticmappings>
@@ -290,10 +262,6 @@
                         <source>Altitude</source>
                         <destination>altitude</destination>
                     </columnmapping>
-                    <columnmapping>
-                        <source>Remarque</source>
-                        <destination>remark</destination>
-                    </columnmapping>
                 </colummappings>
                 <staticmappings>
                     <staticmapping>
@@ -312,10 +280,6 @@
                     <columnmapping>
                         <source>Altitude</source>
                         <destination>altitude</destination>
-                    </columnmapping>
-                    <columnmapping>
-                        <source>Remarque</source>
-                        <destination>remark</destination>
                     </columnmapping>
                 </colummappings>
                 <staticmappings>
@@ -336,10 +300,6 @@
                         <source>Altitude</source>
                         <destination>altitude</destination>
                     </columnmapping>
-                    <columnmapping>
-                        <source>Remarque</source>
-                        <destination>remark</destination>
-                    </columnmapping>
                 </colummappings>
                 <staticmappings>
                     <staticmapping>
@@ -358,10 +318,6 @@
                     <columnmapping>
                         <source>Altitude</source>
                         <destination>altitude</destination>
-                    </columnmapping>
-                    <columnmapping>
-                        <source>Remarque</source>
-                        <destination>remark</destination>
                     </columnmapping>
                 </colummappings>
                 <staticmappings>
@@ -382,10 +338,6 @@
                         <source>Altitude</source>
                         <destination>altitude</destination>
                     </columnmapping>
-                    <columnmapping>
-                        <source>Remarque</source>
-                        <destination>remark</destination>
-                    </columnmapping>
                 </colummappings>
                 <staticmappings>
                     <staticmapping>
@@ -405,10 +357,6 @@
                         <source>Altitude</source>
                         <destination>altitude</destination>
                     </columnmapping>
-                    <columnmapping>
-                        <source>Remarque</source>
-                        <destination>remark</destination>
-                    </columnmapping>
                 </colummappings>
                 <staticmappings>
                     <staticmapping>
@@ -427,10 +375,6 @@
                     <columnmapping>
                         <source>Altitude</source>
                         <destination>altitude</destination>
-                    </columnmapping>
-                    <columnmapping>
-                        <source>Remarque</source>
-                        <destination>remark</destination>
                     </columnmapping>
                 </colummappings>
                 <staticmappings>
@@ -541,10 +485,6 @@
                         <source>Altitude</source>
                         <destination>altitude</destination>
                     </columnmapping>
-                    <columnmapping>
-                        <source>Remarque</source>
-                        <destination>remark</destination>
-                    </columnmapping>
                 </colummappings>
                 <staticmappings>
                     <staticmapping>
@@ -563,10 +503,6 @@
                     <columnmapping>
                         <source>Altitude</source>
                         <destination>altitude</destination>
-                    </columnmapping>
-                    <columnmapping>
-                        <source>Remarque</source>
-                        <destination>remark</destination>
                     </columnmapping>
                 </colummappings>
                 <staticmappings>
@@ -587,10 +523,6 @@
                         <source>Altitude</source>
                         <destination>altitude</destination>
                     </columnmapping>
-                    <columnmapping>
-                        <source>Remarque</source>
-                        <destination>remark</destination>
-                    </columnmapping>
                 </colummappings>
                 <staticmappings>
                     <staticmapping>
@@ -609,10 +541,6 @@
                     <columnmapping>
                         <source>Altitude</source>
                         <destination>altitude</destination>
-                    </columnmapping>
-                    <columnmapping>
-                        <source>Remarque</source>
-                        <destination>remark</destination>
                     </columnmapping>
                 </colummappings>
                 <staticmappings>
@@ -633,10 +561,6 @@
                         <source>Altitude</source>
                         <destination>altitude</destination>
                     </columnmapping>
-                    <columnmapping>
-                        <source>Remarque</source>
-                        <destination>remark</destination>
-                    </columnmapping>
                 </colummappings>
                 <staticmappings>
                     <staticmapping>
@@ -655,10 +579,6 @@
                     <columnmapping>
                         <source>Altitude</source>
                         <destination>altitude</destination>
-                    </columnmapping>
-                    <columnmapping>
-                        <source>Remarque</source>
-                        <destination>remark</destination>
                     </columnmapping>
                 </colummappings>
                 <staticmappings>
@@ -679,10 +599,6 @@
                         <source>Altitude</source>
                         <destination>altitude</destination>
                     </columnmapping>
-                    <columnmapping>
-                        <source>Remarque</source>
-                        <destination>remark</destination>
-                    </columnmapping>
                 </colummappings>
                 <staticmappings>
                     <staticmapping>
@@ -701,10 +617,6 @@
                     <columnmapping>
                         <source>Altitude</source>
                         <destination>altitude</destination>
-                    </columnmapping>
-                    <columnmapping>
-                        <source>Remarque</source>
-                        <destination>remark</destination>
                     </columnmapping>
                 </colummappings>
                 <staticmappings>
@@ -725,10 +637,6 @@
                         <source>Altitude</source>
                         <destination>altitude</destination>
                     </columnmapping>
-                    <columnmapping>
-                        <source>Remarque</source>
-                        <destination>remark</destination>
-                    </columnmapping>
                 </colummappings>
                 <staticmappings>
                     <staticmapping>
@@ -747,10 +655,6 @@
                     <columnmapping>
                         <source>Altitude</source>
                         <destination>altitude</destination>
-                    </columnmapping>
-                    <columnmapping>
-                        <source>Remarque</source>
-                        <destination>remark</destination>
                     </columnmapping>
                 </colummappings>
                 <staticmappings>
