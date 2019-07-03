@@ -234,25 +234,27 @@
                 </colummappings>
             </pointlayer>
             <pointlayer code="332"> <!-- Changement de pente -->
-                <destinationlayer>Points de construction</destinationlayer>
+                <destinationlayer>Pièces d'installations</destinationlayer>
                 <colummappings>
                     <columnmapping>
                         <source>Point_ID</source>
-                        <destination>id</destination>
+                        <destination>identification</destination>
                     </columnmapping>
                     <columnmapping>
                         <source>Altitude</source>
                         <destination>altitude</destination>
                     </columnmapping>
                     <columnmapping>
-                        <source>Code</source>
-                        <destination>code</destination>
-                    </columnmapping>
-                    <columnmapping>
                         <source>Remarque</source>
                         <destination>remark</destination>
                     </columnmapping>
                 </colummappings>
+                <staticmappings>
+                    <staticmapping>
+                        <value>332</value>
+                        <destination>fk_part_type</destination>
+                    </staticmapping>
+                </staticmappings>
             </pointlayer>
             <pointlayer code="333"> <!-- Pièce isolante -->
                 <destinationlayer>Pièces d'installations</destinationlayer>
@@ -848,25 +850,31 @@
                 </colummappings>
             </pointlayer>
             <pointlayer code="410"><!-- Regard de visite -->
-                <destinationlayer>Points de construction</destinationlayer>
+                <destinationlayer>Ouvrages</destinationlayer>
                 <colummappings>
                     <columnmapping>
                         <source>Point_ID</source>
-                        <destination>id</destination>
+                        <destination>identifier</destination>
                     </columnmapping>
                     <columnmapping>
                         <source>Altitude</source>
-                        <destination>altitude</destination>
-                    </columnmapping>
-                    <columnmapping>
-                        <source>Code</source>
-                        <destination>code</destination>
+                        <destination>wn_bottom_level</destination>
                     </columnmapping>
                     <columnmapping>
                         <source>Remarque</source>
                         <destination>remark</destination>
                     </columnmapping>
                 </colummappings>
+                <staticmappings>
+                    <staticmapping>
+                        <value>manhole</value>
+                        <destination>ws_type</destination>
+                    </staticmapping>
+                    <staticmapping>
+                        <value>204</value>
+                        <destination>ma_function</destination>
+                    </staticmapping>
+                </staticmappings>
             </pointlayer>
             <pointlayer code="411"><!-- Bassin de décantation -->
                 <destinationlayer>Points de construction</destinationlayer>
