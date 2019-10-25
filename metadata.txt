@@ -10,7 +10,7 @@
 name=EasyImport
 qgisMinimumVersion=3.2
 description=This plugins enables easy GPS codification to any layer destination
-version=3.1.0
+version=3.2.0
 author=Xavier Ménétrey et Arnaud Poncet-Montanges / Ville de Pully
 email=informatique@pully.ch
 
