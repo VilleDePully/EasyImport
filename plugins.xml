@@ -2,16 +2,16 @@
 <plugins>
     <pyqgis_plugin name="EasyImport" version="3.2.0">
         <description><![CDATA[EasyImport : Plugin for GPS Import]]></description>
-        <version>3.2.0</version>
+        <version>3.3.0</version>
         <qgis_minimum_version>3.2</qgis_minimum_version>
         <homepage>https://github.com/VilleDePully/EasyImport</homepage>
-        <file_name>easyimport.3.2.0.zip</file_name>
+        <file_name>easyimport.3.3.0.zip</file_name>
         <icon>icon.png</icon>
-        <author_name>Xavier Ménétrey, Arnaud Poncet-Montanges</author_name>
-        <download_url>https://github.com/VilleDePully/EasyImport/releases/download/3.2.0/easyimport.3.2.0.zip</download_url>
+        <author_name>Xavier Mï¿½nï¿½trey, Arnaud Poncet-Montanges</author_name>
+        <download_url>https://github.com/VilleDePully/EasyImport/releases/download/3.3.0/easyimport.3.3.0.zip</download_url>
         <uploaded_by>ponceta</uploaded_by>
         <create_date>2018-03-07T17:00:00.000000</create_date>
-            <update_date>2019-10-25T11:00:00.000000</update_date>
+            <update_date>2021-09-16T11:00:00.000000</update_date>
         <experimental>False</experimental>
         <deprecated>False</deprecated>
         <tracker>https://github.com/VilleDePully/EasyImport/issues</tracker>

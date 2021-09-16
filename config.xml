@@ -1180,6 +1180,19 @@
     <!-- Configuration QELE -->
     <config id="3" name="Import ELE">
         <pointlayers>
+            <pointlayer code="500">
+                <destinationlayer>Points de construction</destinationlayer>
+                <colummappings>
+                    <columnmapping>
+                        <source>Point_ID</source>
+                        <destination>identifier</destination>
+                    </columnmapping>
+                    <columnmapping>
+                        <source>Altitude</source>
+                        <destination>level</destination>
+                    </columnmapping>
+                </colummappings>
+            </pointlayer>
             <pointlayer code="501">
                 <destinationlayer>Consommateur Public</destinationlayer>
                 <colummappings>
