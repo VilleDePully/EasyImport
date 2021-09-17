@@ -1180,16 +1180,20 @@
     <!-- Configuration QELE -->
     <config id="3" name="Import ELE">
         <pointlayers>
-            <pointlayer code="500">
+            <pointlayer code="500"><!-- Point de détail -->
                 <destinationlayer>Points de construction</destinationlayer>
                 <colummappings>
                     <columnmapping>
                         <source>Point_ID</source>
-                        <destination>identifier</destination>
+                        <destination>id</destination>
                     </columnmapping>
                     <columnmapping>
                         <source>Altitude</source>
-                        <destination>level</destination>
+                        <destination>altitude</destination>
+                    </columnmapping>
+                    <columnmapping>
+                        <source>Code</source>
+                        <destination>code</destination>
                     </columnmapping>
                 </colummappings>
             </pointlayer>
@@ -1198,11 +1202,15 @@
                 <colummappings>
                     <columnmapping>
                         <source>Point_ID</source>
-                        <destination>identifier</destination>
+                        <destination>id</destination>
                     </columnmapping>
                     <columnmapping>
                         <source>Altitude</source>
-                        <destination>level</destination>
+                        <destination>altitude</destination>
+                    </columnmapping>
+                    <columnmapping>
+                        <source>Code</source>
+                        <destination>code</destination>
                     </columnmapping>
                 </colummappings>
             </pointlayer>
