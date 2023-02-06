@@ -4,9 +4,11 @@ Your plugin EasyImport was created in:
     E:\SIGIP\Plugins\AutoImport\EasyImport
 
 Your QGIS plugin directory is located at:
-    C:/Users/pulmexa/.qgis2/python/plugins
+    C:\Users\user\AppData\Roaming\QGIS\QGIS3\profiles\default\python\plugins
 
 What's Next:
+
+  * Since version 3.4.0, switch to SRS MN95
 
   * Copy the entire directory containing your new plugin to the QGIS plugin
     directory
