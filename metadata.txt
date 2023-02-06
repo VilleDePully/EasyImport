@@ -8,9 +8,9 @@
 
 [general]
 name=EasyImport
-qgisMinimumVersion=3.2
+qgisMinimumVersion=3.22
 description=This plugins enables easy GPS codification to any layer destination
-version=3.3.0
+version=3.4.0
 author=Xavier Ménétrey et Arnaud Poncet-Montanges / Ville de Pully
 email=informatique@pully.ch
 
@@ -23,7 +23,7 @@ repository=https://github.com/VilleDePully/EasyImport
 # Recommended items:
 
 # Uncomment the following line and add your changelog:
-# changelog=
+changelog=version 3.4.0 switch to MN95 SRS
 
 # Tags are comma separated with spaces allowed
 tags=GPS, Import, Codification
