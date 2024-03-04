@@ -6,6 +6,9 @@ Imports .ascii or .prn text files to qgis predefinite QGIS layers
 
 Codification is defined in https://github.com/VilleDePully/EasyImport/blob/master/config.xml
 
+•	<destinationlayer>Nom de la couche dans le projet QGIS</destinationlayer>
+•	<columnmapping> <source> -> <destination> Nom de l’attribut dans le projet QGIS
+
 Really simple and fast to use.
 
 Supports different modes like full or network specific imports.
