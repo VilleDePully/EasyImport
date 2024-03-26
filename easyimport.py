@@ -290,7 +290,8 @@ class EasyImport:
                 # Extract the information
                 featureDict[0] = int(re.findall('[0-9]+', line_fields[0])[0])
                 #    featureDict[0] = int(re.findall(r'\d+', line_fields[0])[0])
-                featureDict[1] = str(re.findall('[a-zA-Z]+', line_fields[0])[0])
+                networkName = re.findall('[a-zA-Z]+', line_fields[0])
+                featureDict[1] = str(networkName[0]) if networkName else None
 
                 try:
                     featureDict[2] = str(line_fields[5])
