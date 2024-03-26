@@ -410,7 +410,7 @@ class EasyImport:
         self.getShapeFiles()
 
         if len(self.shapeFiles) <= 0:
-            QMessageBox.warning(self.iface.mainWindow(), "Shape import", "No shape file found.")
+            QMessageBox.warning(self.iface.mainWindow(), "File import", "No ascii file (*.asc, *.prn) found.")
             return
 
             # Shapefiles that match the config code
