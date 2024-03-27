@@ -39,7 +39,7 @@ import os.path
 from osgeo import ogr
 from osgeo import osr
 
-from qgis.core import QgsProject, QgsFeature, QgsGeometry, QgsVectorLayerUtils
+from qgis.core import QgsProject, QgsFeature, QgsGeometry, QgsVectorLayerUtils, QgsWkbTypes
 from glob import glob
 
 
@@ -470,7 +470,6 @@ class EasyImport:
             featureCount = layer.GetFeatureCount()
 
         # Get import rules with column mappings
-
         for index in range(columnMappings.count()):
             sourcecolumnname = columnMappings.at(index).toElement().elementsByTagName('source').item(
                 0).toElement().text()
@@ -482,7 +481,6 @@ class EasyImport:
             colunmMappingDict[sourcecolumnname] = destinationcolumnname
 
         # Get import rules with static value mappings
-
         for index in range(staticMappings.count()):
             staticValue = staticMappings.at(index).toElement().elementsByTagName('value').item(0).toElement().text()
             destinationcolumnname = staticMappings.at(index).toElement().elementsByTagName('destination').item(
@@ -506,8 +504,14 @@ class EasyImport:
             # newFeature.setFields(initFields)
             # newFeature.initAttributes(initFields.size())
 
-            # Set geometry
-            newFeature.setGeometry(QgsGeometry.fromWkt(str(feature.GetGeometryRef())))
+            featureGeometry = QgsGeometry.fromWkt(str(feature.GetGeometryRef()))
+
+            # Remove Z value if destination layer is not 3D
+            if destinationlayer.wkbType() != QgsWkbTypes.PointZ:
+                featureGeometry.get().dropZValue()
+
+            # Set the geometry
+            newFeature.setGeometry(featureGeometry)
 
             # For each column mapping
             for k in colunmMappingDict.keys():
