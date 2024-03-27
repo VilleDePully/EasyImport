@@ -15,7 +15,7 @@ Codification is defined in [config.xml](config.xml)
 
 - `pointlayers`
   - `pointlayer.destinationlayer`: Destination layer name in QGIS project
-- `colummappings`
+- `columnmappings`
   - `columnmapping.source`: Column name in source data file
   - `columnmapping.destination`: Column name in the destination layer
 - `staticmappings`
