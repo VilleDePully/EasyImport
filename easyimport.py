@@ -217,7 +217,7 @@ class EasyImport:
     def setShapeDirectory(self):
         """Display folder browser dialog."""
 
-        file = QFileDialog.getExistingDirectory(None, 'Select gps/shape file directory.')
+        file = QFileDialog.getExistingDirectory(None, 'Select GPS file directory.')
         self.dlg.txtDirectory.setText(file)
         self.shapeDirectory = QDir(file)
 
