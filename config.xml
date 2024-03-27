@@ -3,15 +3,11 @@
     <!-- Configuration Import GPS -->
     <config id="0" name="Import GPS">
         <pointlayers>
-            <!-- l'attribut code correspond au nom du fichier de données source sans extension (p.e 300.shp) -->
             <pointlayer code="0">
-                <!-- Nom de la couche de destination dans le projet QGis (case sensitiv...) -->
                 <destinationlayer>Points</destinationlayer>
                 <colummappings>
                     <columnmapping>
-                        <!-- Nom de la colonne du fichier de données source -->
                         <source>Point_ID</source>
-                        <!-- Nom de la colonne de la couche QGis de destination -->
                         <destination>id_gps_mes</destination>
                     </columnmapping>
                     <columnmapping>
@@ -37,15 +33,11 @@
     <!-- Configuration QWAT -->
     <config id="1" name="Import EP">
         <pointlayers>
-            <!-- l'attribut code correspond au nom du fichier de données source sans extension (p.e 300.shp) -->
             <pointlayer code="300">
-                <!-- Nom de la couche de destination dans le projet QGis (case sensitiv...) -->
                 <destinationlayer>Points de construction</destinationlayer>
                 <colummappings>
                     <columnmapping>
-                        <!-- Nom de la colonne du fichier de données source -->
                         <source>Point_ID</source>
-                        <!-- Nom de la colonne de la couche QGis de destination -->
                         <destination>id</destination>
                     </columnmapping>
                     <columnmapping>
@@ -117,7 +109,6 @@
                 </colummappings>
                 <staticmappings>
                     <staticmapping>
-                        <!-- Valeur statique à placer dans la colonne de destination -->
                         <value>327</value>
                         <destination>fk_part_type</destination>
                     </staticmapping>
