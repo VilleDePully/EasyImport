@@ -39,7 +39,7 @@ import os.path
 from osgeo import ogr
 from osgeo import osr
 
-from qgis.core import QgsProject, QgsFeature, QgsGeometry, QgsVectorLayerUtils
+from qgis.core import QgsProject, QgsFeature, QgsGeometry, QgsVectorLayerUtils, QgsWkbTypes
 from glob import glob
 
 
@@ -217,7 +217,7 @@ class EasyImport:
     def setShapeDirectory(self):
         """Display folder browser dialog."""
 
-        file = QFileDialog.getExistingDirectory(None, 'Select gps/shape file directory.')
+        file = QFileDialog.getExistingDirectory(None, 'Select GPS file directory.')
         self.dlg.txtDirectory.setText(file)
         self.shapeDirectory = QDir(file)
 
@@ -290,7 +290,8 @@ class EasyImport:
                 # Extract the information
                 featureDict[0] = int(re.findall('[0-9]+', line_fields[0])[0])
                 #    featureDict[0] = int(re.findall(r'\d+', line_fields[0])[0])
-                featureDict[1] = str(re.findall('[a-zA-Z]+', line_fields[0])[0])
+                networkName = re.findall('[a-zA-Z]+', line_fields[0])
+                featureDict[1] = str(networkName[0]) if networkName else None
 
                 try:
                     featureDict[2] = str(line_fields[5])
@@ -409,7 +410,7 @@ class EasyImport:
         self.getShapeFiles()
 
         if len(self.shapeFiles) <= 0:
-            QMessageBox.warning(self.iface.mainWindow(), "Shape import", "No shape file found.")
+            QMessageBox.warning(self.iface.mainWindow(), "File import", "No ascii file (*.asc, *.prn) found.")
             return
 
             # Shapefiles that match the config code
@@ -469,7 +470,6 @@ class EasyImport:
             featureCount = layer.GetFeatureCount()
 
         # Get import rules with column mappings
-
         for index in range(columnMappings.count()):
             sourcecolumnname = columnMappings.at(index).toElement().elementsByTagName('source').item(
                 0).toElement().text()
@@ -481,7 +481,6 @@ class EasyImport:
             colunmMappingDict[sourcecolumnname] = destinationcolumnname
 
         # Get import rules with static value mappings
-
         for index in range(staticMappings.count()):
             staticValue = staticMappings.at(index).toElement().elementsByTagName('value').item(0).toElement().text()
             destinationcolumnname = staticMappings.at(index).toElement().elementsByTagName('destination').item(
@@ -505,8 +504,14 @@ class EasyImport:
             # newFeature.setFields(initFields)
             # newFeature.initAttributes(initFields.size())
 
-            # Set geometry
-            newFeature.setGeometry(QgsGeometry.fromWkt(str(feature.GetGeometryRef())))
+            featureGeometry = QgsGeometry.fromWkt(str(feature.GetGeometryRef()))
+
+            # Remove Z value if destination layer is not 3D
+            if destinationlayer.wkbType() != QgsWkbTypes.PointZ:
+                featureGeometry.get().dropZValue()
+
+            # Set the geometry
+            newFeature.setGeometry(featureGeometry)
 
             # For each column mapping
             for k in colunmMappingDict.keys():

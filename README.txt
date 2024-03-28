@@ -8,8 +8,6 @@ Your QGIS plugin directory is located at:
 
 What's Next:
 
-  * Since version 3.4.0, switch to SRS MN95
-
   * Copy the entire directory containing your new plugin to the QGIS plugin
     directory
 

@@ -1,19 +1,35 @@
-**EasyImport**
+# EasyImport
 
-Simple geocodifier plugin for GPS Import
+Simple geocoding plugin for importing GPS point data
 
-Imports .ascii or .prn text files to qgis predefinite QGIS layers
+## Features
 
-Codification is defined in https://github.com/VilleDePully/EasyImport/blob/master/config.xml
+- Imports `.asc` or `.prn` text files to QGIS predefined QGIS layers
+- Supports different import modes, such as full import or network-specific import
 
-```
-<destinationlayer>Nom de la couche dans le projet QGIS</destinationlayer>`
-<columnmapping> <source> -> <destination> Nom de l’attribut dans le projet QGIS
-```
+![EasyImport](Docs/easyimport.png "EasyImport")
 
-Really simple and fast to use.
+## Codification
 
-Supports different modes like full or network specific imports.
+Codification is defined in [config.xml](config.xml)
 
-![Image EasyImport](https://github.com/VilleDePully/EasyImport/raw/master/Docs/easyimport.png "EasyImport")
-      
+- `pointlayers`
+  - `pointlayer.destinationlayer`: Destination layer name in QGIS project
+- `columnmappings`
+  - `columnmapping.source`: Column name in source data file
+  - `columnmapping.destination`: Column name in the destination layer
+- `staticmappings`
+  - `staticmapping.value`: Static value to store in the destination column ``staticmapping.destination``
+
+## Source file format
+
+The format accepted by *EasyImport* is simple text file (`.asc` or `.prn`) with spaces as separators, which must comply with the following syntax: `NNNNNNabc XXXXXXX.XXX YYYYYYY.YYY ZZZ.ZZZ S.SSS CCC`
+
+- `NNNNNN`: Point number (integer)
+- `abc`: Network, only points in this network will be imported (string)
+- `XXXXXXX.XXX`: X coordinate (real)
+- `YYYYYYY.YYY`: Y coordinate (real)
+- `ZZZ.ZZZ`: Z coordinate (real)
+- `S.SSS`: Accuracy (real)
+- `CCC`: code (string)
+- Everything following text can be imported into the remark field

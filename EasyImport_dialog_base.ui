@@ -45,7 +45,7 @@
     </rect>
    </property>
    <property name="title">
-    <string>1. Select shape file directory</string>
+    <string>1. Select GPS file directory</string>
    </property>
    <widget class="QPushButton" name="btnBrowse">
     <property name="geometry">
@@ -81,7 +81,7 @@
     </rect>
    </property>
    <property name="title">
-    <string>2. Select Import configuration</string>
+    <string>2. Select import configuration</string>
    </property>
    <widget class="QComboBox" name="cbxConfig">
     <property name="geometry">

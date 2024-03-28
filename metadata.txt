@@ -1,7 +1,7 @@
-# This file contains metadata for your plugin. Since 
-# version 2.0 of QGIS this is the proper way to supply 
-# information about a plugin. The old method of 
-# embedding metadata in __init__.py will 
+# This file contains metadata for your plugin. Since
+# version 2.0 of QGIS this is the proper way to supply
+# information about a plugin. The old method of
+# embedding metadata in __init__.py will
 # is no longer supported since version 2.0.
 
 # This file should be included when you package your plugin.# Mandatory items:
@@ -10,8 +10,8 @@
 name=EasyImport
 qgisMinimumVersion=3.22
 description=This plugins enables easy GPS codification to any layer destination
-version=3.4.0
-author=Xavier Ménétrey et Arnaud Poncet-Montanges / Ville de Pully
+version=3.5.0
+author=Xavier Ménétrey et Arnaud Poncet-Montanges (Ville de Pully), Rémi Bovard (Ville de Vevey)
 email=informatique@pully.ch
 
 about=This plugins enables quick and easy GPS codification and import from text files to any QGIS vector layers.
@@ -23,7 +23,11 @@ repository=https://github.com/VilleDePully/EasyImport
 # Recommended items:
 
 # Uncomment the following line and add your changelog:
-changelog=version 3.4.0 switch to MN95 SRS
+changelog=
+    - 3.5.0: Support import into 2D layers, allow numerical identifiers only, improve UI/UX and doc
+    - 3.4.0: Switch to MN95
+
+    Check out the complete changelog on: https://github.com/VilleDePully/EasyImport/releases
 
 # Tags are comma separated with spaces allowed
 tags=GPS, Import, Codification
@@ -36,4 +40,3 @@ experimental=False
 
 # deprecated flag (applies to the whole plugin, not just a single version)
 deprecated=False
-
