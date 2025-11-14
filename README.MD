@@ -33,3 +33,15 @@ The format accepted by *EasyImport* is simple text file (`.asc` or `.prn`) with 
 - `S.SSS`: Accuracy (real)
 - `CCC`: code (string)
 - Everything following text can be imported into the remark field
+
+## Installation
+
+ADD `https://raw.githubusercontent.com/VilleDePully/EasyImport/master/plugins.xml`
+
+To your plugin repository list in QGIS
+
+![image](https://github.com/VilleDePully/EasyImport/assets/8614223/eb90f1b4-27a8-4ab2-9e55-2047773d6455)
+
+Then install or update through the dedicated menu in the QGIS plugin manager :
+
+![image](https://github.com/VilleDePully/EasyImport/assets/8614223/a966095f-dbd0-41dd-baea-f429a5fd500d)
