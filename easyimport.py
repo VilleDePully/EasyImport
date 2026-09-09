@@ -21,10 +21,10 @@
  *                                                                         *
  ***************************************************************************/
 """
-from PyQt5.QtCore import QSettings, QTranslator, qVersion, QCoreApplication, QFile, QDir
-from PyQt5.QtGui import QIcon
-from PyQt5.QtWidgets import QAction, QFileDialog, QMessageBox
-from PyQt5 import QtXml
+from qgis.PyQt.QtCore import QSettings, QTranslator, qVersion, QCoreApplication, QFile, QDir, QIODevice
+from qgis.PyQt.QtGui import QIcon
+from qgis.PyQt.QtWidgets import QAction, QFileDialog, QMessageBox
+from qgis.PyQt import QtXml
 
 # Initialize Qt resources from file resources.py
 from .resources import *
@@ -231,7 +231,11 @@ class EasyImport:
         """Get each shapefile in defined folder."""
 
         self.shapeFiles.clear()
-        shapefiles = self.shapeDirectory.entryList(['*.shp'], QDir.Files, QDir.Name)
+        shapefiles = self.shapeDirectory.entryList(
+            ['*.shp'],
+            QDir.Filter.Files,
+            QDir.SortFlag.Name
+        )
         for file in shapefiles:
             # Populate the shape dictionnary
             self.shapeFiles[file.split('.', 1)[0]] = file
@@ -251,7 +255,11 @@ class EasyImport:
         """Get each asciifile in defined folder."""
 
         #        self.asciiFiles.clear()
-        asciifiles = self.shapeDirectory.entryList(['*.asc', '*.prn'], QDir.Files, QDir.Name)
+        asciifiles = self.shapeDirectory.entryList(
+            ['*.asc', '*.prn'],
+            QDir.Filter.Files,
+            QDir.SortFlag.Name
+        )
         for file in asciifiles:
             # Convert into shapefile
             self.ascii2shape(file)
@@ -382,7 +390,10 @@ class EasyImport:
         """Load configuration combobox with configurations stored in XML configuration file."""
 
         XMLFile = QFile(self.plugin_dir + '/' + self.configFileName)
-        if not XMLFile.open(QFile.ReadOnly | QFile.Text):
+        if not XMLFile.open(
+                QIODevice.OpenModeFlag.ReadOnly |
+                QIODevice.OpenModeFlag.Text
+            ):
             QMessageBox.warning(self.iface.mainWindow(), "XML Configuration", "Cannot read file %s:\n%s." % (
             self.plugin_dir + '/' + self.configFileName, XMLFile.errorString()), QMessageBox.Ok)
             return False
@@ -558,7 +569,7 @@ class EasyImport:
         # show the dialog
         self.dlg.show()
         # Run the dialog event loop
-        result = self.dlg.exec_()
+        result = self.dlg.exec()
 
         # Reset progress bar value
         self.dlg.pgbImport.setValue(0)
