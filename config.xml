@@ -710,7 +710,7 @@
                         <destination>ws_type</destination>
                     </staticmapping>
                     <staticmapping>
-                        <value>204</value>
+                        <value>8739</value>
                         <destination>ma_function</destination>
                     </staticmapping>
                 </staticmappings>
@@ -821,7 +821,7 @@
                         <destination>ws_type</destination>
                     </staticmapping>
                     <staticmapping>
-                        <value>4532</value>
+                        <value>8601</value>
                         <destination>ma_function</destination>
                     </staticmapping>
                 </staticmappings>
@@ -943,7 +943,7 @@
                         <destination>ws_type</destination>
                     </staticmapping>
                     <staticmapping>
-                        <value>204</value>
+                        <value>8736</value>
                         <destination>ma_function</destination>
                     </staticmapping>
                 </staticmappings>
@@ -1100,7 +1100,7 @@
                         <destination>ws_type</destination>
                     </staticmapping>
                     <staticmapping>
-                        <value>204</value>
+                        <value>5345</value>
                         <destination>ma_function</destination>
                     </staticmapping>
                 </staticmappings>
