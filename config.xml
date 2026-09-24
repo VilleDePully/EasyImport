@@ -710,7 +710,7 @@
                         <destination>ws_type</destination>
                     </staticmapping>
                     <staticmapping>
-                        <value>8739</value>
+                        <value>8736</value>
                         <destination>ma_function</destination>
                     </staticmapping>
                 </staticmappings>
