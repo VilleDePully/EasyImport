@@ -697,7 +697,7 @@
                 <columnmappings>
                     <columnmapping>
                         <source>Point_ID</source>
-                        <destination>identifier</destination>
+                        <destination>pully_identifier</destination>
                     </columnmapping>
                     <columnmapping>
                         <source>Altitude</source>
@@ -710,7 +710,7 @@
                         <destination>ws_type</destination>
                     </staticmapping>
                     <staticmapping>
-                        <value>204</value>
+                        <value>8736</value>
                         <destination>ma_function</destination>
                     </staticmapping>
                 </staticmappings>
@@ -720,7 +720,7 @@
                 <columnmappings>
                     <columnmapping>
                         <source>Point_ID</source>
-                        <destination>identifier</destination>
+                        <destination>pully_identifier</destination>
                     </columnmapping>
                     <columnmapping>
                         <source>Altitude</source>
@@ -743,7 +743,7 @@
                 <columnmappings>
                     <columnmapping>
                         <source>Point_ID</source>
-                        <destination>identifier</destination>
+                        <destination>pully_identifier</destination>
                     </columnmapping>
                     <columnmapping>
                         <source>Altitude</source>
@@ -766,7 +766,7 @@
                 <columnmappings>
                     <columnmapping>
                         <source>Point_ID</source>
-                        <destination>identifier</destination>
+                        <destination>pully_identifier</destination>
                     </columnmapping>
                     <columnmapping>
                         <source>Altitude</source>
@@ -785,11 +785,11 @@
                 </staticmappings>
             </pointlayer>
             <pointlayer code="414"><!-- Changement d'année de construction -->
-                <destinationlayer>Noeuds_reseau</destinationlayer>
+                <destinationlayer>Noeud de réseau</destinationlayer>
                 <columnmappings>
                     <columnmapping>
                         <source>Point_ID</source>
-                        <destination>identifier</destination>
+                        <destination>pully_identifier</destination>
                     </columnmapping>
                     <columnmapping>
                         <source>Altitude</source>
@@ -808,7 +808,7 @@
                 <columnmappings>
                     <columnmapping>
                         <source>Point_ID</source>
-                        <destination>identifier</destination>
+                        <destination>pully_identifier</destination>
                     </columnmapping>
                     <columnmapping>
                         <source>Altitude</source>
@@ -821,17 +821,17 @@
                         <destination>ws_type</destination>
                     </staticmapping>
                     <staticmapping>
-                        <value>4532</value>
+                        <value>8601</value>
                         <destination>ma_function</destination>
                     </staticmapping>
                 </staticmappings>
             </pointlayer>
             <pointlayer code="416"><!-- Changement de pente -->
-                <destinationlayer>Noeuds_reseau</destinationlayer>
+                <destinationlayer>Noeud de réseau</destinationlayer>
                 <columnmappings>
                     <columnmapping>
                         <source>Point_ID</source>
-                        <destination>identifier</destination>
+                        <destination>pully_identifier</destination>
                     </columnmapping>
                     <columnmapping>
                         <source>Altitude</source>
@@ -846,11 +846,11 @@
                 </columnmappings>
             </pointlayer>
             <pointlayer code="417"><!-- Début de canal -->
-                <destinationlayer>Noeuds_reseau</destinationlayer>
+                <destinationlayer>Noeud de réseau</destinationlayer>
                 <columnmappings>
                     <columnmapping>
                         <source>Point_ID</source>
-                        <destination>identifier</destination>
+                        <destination>pully_identifier</destination>
                     </columnmapping>
                     <columnmapping>
                         <source>Altitude</source>
@@ -869,7 +869,7 @@
                 <columnmappings>
                     <columnmapping>
                         <source>Point_ID</source>
-                        <destination>identifier</destination>
+                        <destination>pully_identifier</destination>
                     </columnmapping>
                     <columnmapping>
                         <source>Altitude</source>
@@ -888,11 +888,11 @@
                 </staticmappings>
             </pointlayer>
             <pointlayer code="419"><!-- Changement de dimension -->
-                <destinationlayer>Noeuds_reseau</destinationlayer>
+                <destinationlayer>Noeud de réseau</destinationlayer>
                 <columnmappings>
                     <columnmapping>
                         <source>Point_ID</source>
-                        <destination>identifier</destination>
+                        <destination>pully_identifier</destination>
                     </columnmapping>
                     <columnmapping>
                         <source>Altitude</source>
@@ -907,11 +907,11 @@
                 </columnmappings>
             </pointlayer>
             <pointlayer code="420"><!-- Changement de calibre/matériau -->
-                <destinationlayer>Noeuds_reseau</destinationlayer>
+                <destinationlayer>Noeud de réseau</destinationlayer>
                 <columnmappings>
                     <columnmapping>
                         <source>Point_ID</source>
-                        <destination>identifier</destination>
+                        <destination>pully_identifier</destination>
                     </columnmapping>
                     <columnmapping>
                         <source>Altitude</source>
@@ -930,7 +930,7 @@
                 <columnmappings>
                     <columnmapping>
                         <source>Point_ID</source>
-                        <destination>identifier</destination>
+                        <destination>pully_identifier</destination>
                     </columnmapping>
                     <columnmapping>
                         <source>Altitude</source>
@@ -943,17 +943,17 @@
                         <destination>ws_type</destination>
                     </staticmapping>
                     <staticmapping>
-                        <value>204</value>
+                        <value>8736</value>
                         <destination>ma_function</destination>
                     </staticmapping>
                 </staticmappings>
             </pointlayer>
             <pointlayer code="422"><!-- Changement de matériau -->
-                <destinationlayer>Noeuds_reseau</destinationlayer>
+                <destinationlayer>Noeud de réseau</destinationlayer>
                 <columnmappings>
                     <columnmapping>
                         <source>Point_ID</source>
-                        <destination>identifier</destination>
+                        <destination>pully_identifier</destination>
                     </columnmapping>
                     <columnmapping>
                         <source>Altitude</source>
@@ -972,7 +972,7 @@
                 <columnmappings>
                     <columnmapping>
                         <source>Point_ID</source>
-                        <destination>identifier</destination>
+                        <destination>pully_identifier</destination>
                     </columnmapping>
                     <columnmapping>
                         <source>Altitude</source>
@@ -995,7 +995,7 @@
                 <columnmappings>
                     <columnmapping>
                         <source>Point_ID</source>
-                        <destination>identifier</destination>
+                        <destination>pully_identifier</destination>
                     </columnmapping>
                     <columnmapping>
                         <source>Altitude</source>
@@ -1018,7 +1018,7 @@
                 <columnmappings>
                     <columnmapping>
                         <source>Point_ID</source>
-                        <destination>identifier</destination>
+                        <destination>pully_identifier</destination>
                     </columnmapping>
                     <columnmapping>
                         <source>Altitude</source>
@@ -1041,7 +1041,7 @@
                 <columnmappings>
                     <columnmapping>
                         <source>Point_ID</source>
-                        <destination>identifier</destination>
+                        <destination>pully_identifier</destination>
                     </columnmapping>
                     <columnmapping>
                         <source>Altitude</source>
@@ -1064,7 +1064,7 @@
                 <columnmappings>
                     <columnmapping>
                         <source>Point_ID</source>
-                        <destination>identifier</destination>
+                        <destination>pully_identifier</destination>
                     </columnmapping>
                     <columnmapping>
                         <source>Altitude</source>
@@ -1087,7 +1087,7 @@
                 <columnmappings>
                     <columnmapping>
                         <source>Point_ID</source>
-                        <destination>identifier</destination>
+                        <destination>pully_identifier</destination>
                     </columnmapping>
                     <columnmapping>
                         <source>Altitude</source>
@@ -1100,7 +1100,7 @@
                         <destination>ws_type</destination>
                     </staticmapping>
                     <staticmapping>
-                        <value>204</value>
+                        <value>5345</value>
                         <destination>ma_function</destination>
                     </staticmapping>
                 </staticmappings>
@@ -1110,7 +1110,7 @@
                 <columnmappings>
                     <columnmapping>
                         <source>Point_ID</source>
-                        <destination>identifier</destination>
+                        <destination>pully_identifier</destination>
                     </columnmapping>
                     <columnmapping>
                         <source>Altitude</source>
@@ -1129,7 +1129,7 @@
                 <columnmappings>
                     <columnmapping>
                         <source>Point_ID</source>
-                        <destination>identifier</destination>
+                        <destination>pully_identifier</destination>
                     </columnmapping>
                     <columnmapping>
                         <source>Altitude</source>
@@ -1148,11 +1148,11 @@
                 </staticmappings>
             </pointlayer>
             <pointlayer code="431"><!-- Raccord collecteur -->
-                <destinationlayer>Noeuds_reseau</destinationlayer>
+                <destinationlayer>Noeud de réseau</destinationlayer>
                 <columnmappings>
                     <columnmapping>
                         <source>Point_ID</source>
-                        <destination>identifier</destination>
+                        <destination>pully_identifier</destination>
                     </columnmapping>
                     <columnmapping>
                         <source>Altitude</source>
