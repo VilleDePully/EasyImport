@@ -785,7 +785,7 @@
                 </staticmappings>
             </pointlayer>
             <pointlayer code="414"><!-- Changement d'année de construction -->
-                <destinationlayer>Noeuds_reseau</destinationlayer>
+                <destinationlayer>Noeud de réseau</destinationlayer>
                 <columnmappings>
                     <columnmapping>
                         <source>Point_ID</source>
@@ -827,7 +827,7 @@
                 </staticmappings>
             </pointlayer>
             <pointlayer code="416"><!-- Changement de pente -->
-                <destinationlayer>Noeuds_reseau</destinationlayer>
+                <destinationlayer>Noeud de réseau</destinationlayer>
                 <columnmappings>
                     <columnmapping>
                         <source>Point_ID</source>
@@ -846,7 +846,7 @@
                 </columnmappings>
             </pointlayer>
             <pointlayer code="417"><!-- Début de canal -->
-                <destinationlayer>Noeuds_reseau</destinationlayer>
+                <destinationlayer>Noeud de réseau</destinationlayer>
                 <columnmappings>
                     <columnmapping>
                         <source>Point_ID</source>
@@ -888,7 +888,7 @@
                 </staticmappings>
             </pointlayer>
             <pointlayer code="419"><!-- Changement de dimension -->
-                <destinationlayer>Noeuds_reseau</destinationlayer>
+                <destinationlayer>Noeud de réseau</destinationlayer>
                 <columnmappings>
                     <columnmapping>
                         <source>Point_ID</source>
@@ -907,7 +907,7 @@
                 </columnmappings>
             </pointlayer>
             <pointlayer code="420"><!-- Changement de calibre/matériau -->
-                <destinationlayer>Noeuds_reseau</destinationlayer>
+                <destinationlayer>Noeud de réseau</destinationlayer>
                 <columnmappings>
                     <columnmapping>
                         <source>Point_ID</source>
@@ -949,7 +949,7 @@
                 </staticmappings>
             </pointlayer>
             <pointlayer code="422"><!-- Changement de matériau -->
-                <destinationlayer>Noeuds_reseau</destinationlayer>
+                <destinationlayer>Noeud de réseau</destinationlayer>
                 <columnmappings>
                     <columnmapping>
                         <source>Point_ID</source>
@@ -1148,7 +1148,7 @@
                 </staticmappings>
             </pointlayer>
             <pointlayer code="431"><!-- Raccord collecteur -->
-                <destinationlayer>Noeuds_reseau</destinationlayer>
+                <destinationlayer>Noeud de réseau</destinationlayer>
                 <columnmappings>
                     <columnmapping>
                         <source>Point_ID</source>
